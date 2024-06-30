@@ -1,3 +1,22 @@
+/* Import custom font from Google Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Cedarville+Cursive&display=swap");
+
+/* Import base styles from Tailwind CSS */
 @tailwind base;
+
+/* Import components styles from Tailwind CSS */
 @tailwind components;
+
+/* Import utility classes from Tailwind CSS */
 @tailwind utilities;
+
+/* Hide scrollbars in Webkit browsers (Chrome, Safari) */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbars in IE, Edge, and Firefox */
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
