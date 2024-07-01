@@ -19,6 +19,7 @@ function HotelsMainProvider({ children }) {
   const [noOfAdults, setNoofAdults] = useState(2);
   const [isRoomQuantityPopup, setIsRoomQuantityPopup] = useState(false);
   const [isAdultQuantityPopup, setIsAdultQuantityPopup] = useState(false);
+  const [sort, setSort] = useState("popular");
 
   const cityRef = useRef(null);
   const entryDateRef = useRef(null);
@@ -203,6 +204,8 @@ function HotelsMainProvider({ children }) {
         handleNumberOfRooms,
         handleNumberOfAdults,
         handleClickOutside,
+        sort,
+        setSort,
       }}
     >
       {children}

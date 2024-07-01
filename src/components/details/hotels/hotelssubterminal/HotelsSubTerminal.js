@@ -6,6 +6,7 @@ import HotelsSubCheckInPopup from "./HotelsSubCheckInPopup";
 import { useHotelsMainContext } from "../../../context/Hotels/HotelsMainContext";
 import HotelsSubCheckOutPopup from "./HotelsSubCheckOutPopup";
 import HotelSubReservationServicePopup from "./hotelssubreservationservice/HotelSubReservationServicePopup";
+import HotelsSort from "../hotelssort/HotelsSort";
 
 const commonClass =
   "relative h-14 flex-col gap-2 w-[20%] flex rounded-md bg-[#ffffff1a] px-4 font-semibold uppercase text-left cursor-default";
@@ -136,10 +137,11 @@ function HotelsSubTerminal() {
         >
           Search
         </button>
-        <div></div>
-        {/*
+      </div>
+      <HotelsSort />
+      <div></div>
+      {/*
      
-          </div>
           {sortIsLoading && <Spinner />}
           <div className="relative z-[1] flex w-full justify-center gap-8 bg-gray-200">
             <FlightsFilter
@@ -174,7 +176,6 @@ function HotelsSubTerminal() {
                 sortIsLoading={sortIsLoading}
                 filterItems={filterItems}
               /> */}
-      </div>
     </div>
   );
 }
