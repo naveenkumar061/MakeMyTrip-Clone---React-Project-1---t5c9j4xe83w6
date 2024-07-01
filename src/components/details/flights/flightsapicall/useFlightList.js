@@ -2,7 +2,7 @@
 import { useQuery } from "@tanstack/react-query";
 
 // Internal imports
-import { getFlightsList } from "../../../services/apiFlights";
+import { getFlightsList } from "../../../servenow/apiFlights";
 
 // Custom hook to fetch flights list
 export function useFlightsList() {

@@ -2,7 +2,7 @@
 import { useQuery } from "@tanstack/react-query";
 
 // Custom service and context imports
-import { getFlightsListUsingCityName } from "../../../services/apiFlights";
+import { getFlightsListUsingCityName } from "../../../servenow/apiFlights";
 import { useFlightsMainContext } from "../../../context/Flights/FlightsMainContext";
 
 // Custom hook to fetch flights using city name

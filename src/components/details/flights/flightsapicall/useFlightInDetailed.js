@@ -2,7 +2,7 @@
 import { useQuery } from "@tanstack/react-query";
 
 // Internal Services
-import { getFlightsInDetailed } from "../../../services/apiFlights";
+import { getFlightsInDetailed } from "../../../servenow/apiFlights";
 
 // Custom Hook to fetch detailed flight information
 export function useFlightInDetailed(flightID) {

@@ -2,7 +2,7 @@
 import { createContext, useContext, useState } from "react"; // React core libraries
 
 // API service to fetch offers based on filter
-import { getOffersByFilter } from "../services/apiOffers";
+import { getOffersByFilter } from "../servenow/apiOffers";
 
 // Creating a context for the filter
 const FilterContext = createContext();

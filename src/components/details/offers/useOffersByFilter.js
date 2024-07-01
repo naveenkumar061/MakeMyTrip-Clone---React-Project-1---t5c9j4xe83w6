@@ -2,7 +2,7 @@
 import { useQuery } from "@tanstack/react-query";
 
 // Data services
-import { getOffersByFilter } from "../../services/apiOffers";
+import { getOffersByFilter } from "../../servenow/apiOffers";
 
 // Context
 import { useFilterOptions } from "../../context/FilterContext";

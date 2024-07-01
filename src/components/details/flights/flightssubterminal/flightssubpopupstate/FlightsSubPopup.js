@@ -2,7 +2,7 @@ import { CiSearch } from "react-icons/ci";
 import { useFlightsMainContext } from "../../../../context/Flights/FlightsMainContext";
 import { useFlightsUsingCityName } from "../../flightsapicall/useFlightsUsingCityName";
 import { useEffect } from "react";
-import { getFlightsListUsingCityName } from "../../../../services/apiFlights";
+import { getFlightsListUsingCityName } from "../../../../servenow/apiFlights";
 import FlightsSubPopupList from "./FlightsSubPopupList";
 
 function FlightsSubPopup({ destination }) {

@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { getHotelCities } from "../../../services/apiHotels";
+import { getHotelCities } from "../../../servenow/apiHotels";
 
 export function useHotelsLocation() {
   const {

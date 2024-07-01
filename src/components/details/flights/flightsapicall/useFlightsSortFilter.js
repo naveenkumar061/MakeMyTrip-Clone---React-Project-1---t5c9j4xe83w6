@@ -1,6 +1,6 @@
 // Import statements
 import { useQuery } from "@tanstack/react-query";
-import { getFlightSortFilter } from "../../../services/apiFlights";
+import { getFlightSortFilter } from "../../../servenow/apiFlights";
 
 // Custom hook to fetch and sort/filter flight data
 export function useFlightsSortFilter(

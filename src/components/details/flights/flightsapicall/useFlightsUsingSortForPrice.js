@@ -2,7 +2,7 @@
 import { useQuery } from "@tanstack/react-query";
 
 // Importing local API service function
-import { getFlightSortByPrice } from "../../../services/apiFlights";
+import { getFlightSortByPrice } from "../../../servenow/apiFlights";
 
 // Custom hook to fetch flights sorted by price
 export function useFlightUsingSortForPrice(source, destination, day) {

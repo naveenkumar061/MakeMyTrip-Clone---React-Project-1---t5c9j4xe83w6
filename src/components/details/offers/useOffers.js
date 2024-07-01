@@ -3,7 +3,7 @@
 import { useQuery } from "@tanstack/react-query";
 
 // Services or API calls
-import { getOffers } from "../../services/apiOffers";
+import { getOffers } from "../../servenow/apiOffers";
 
 // Custom Hook: useOffers
 // This custom hook uses the `useQuery` hook from `@tanstack/react-query` to fetch offer data from the API.

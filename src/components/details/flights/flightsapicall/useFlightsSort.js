@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query"; // Third-party libraries
-import { getFlightSortBySortValue } from "../../../services/apiFlights"; // Context or services
+import { getFlightSortBySortValue } from "../../../servenow/apiFlights"; // Context or services
 
 /**
  * Custom hook to fetch sorted flight data

@@ -6,7 +6,7 @@ import { useFlightsMainContext } from "../../../../../context/Flights/FlightsMai
 import { useFlightsUsingCityName } from "../../../flightsapicall/useFlightsUsingCityName";
 
 // Services
-import { getFlightsListUsingCityName } from "../../../../../services/apiFlights";
+import { getFlightsListUsingCityName } from "../../../../../servenow/apiFlights";
 
 // Components
 import FlightsPopupList from "./FlightsPopupList";
