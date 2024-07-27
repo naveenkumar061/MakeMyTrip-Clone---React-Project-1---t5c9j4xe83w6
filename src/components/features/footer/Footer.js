@@ -7,7 +7,7 @@ import PInfo from './PInfo';
 function Footer() {
   return (
     <>
-      <div className="flex flex-col gap-3 p-4">
+      <div className="flex flex-col gap-3 p-4 bg-gray-100">
         {pfList.map((item, index) => (
           <PInfo item={item} key={index} />
         ))}
