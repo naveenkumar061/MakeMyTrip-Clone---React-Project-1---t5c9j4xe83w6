@@ -1,5 +1,5 @@
 function Trips() {
-  return <div></div>;
+  return <div>Trips</div>;
 }
 
 export default Trips;

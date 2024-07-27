@@ -1,0 +1,32 @@
+import { useMutation } from '@tanstack/react-query';
+import toast from 'react-hot-toast';
+import { loginUser } from '../../services/apiAuth';
+import { useLoginContext } from '../../context/login/LoginContext';
+
+export function useLogin(close) {
+  const { setIsAuthenticated } = useLoginContext();
+  const { mutate: login, isLoading } = useMutation({
+    mutationFn: ({ email, password }) => loginUser({ email, password }),
+    onSuccess: (user) => {
+      localStorage.setItem('authToken', user.token);
+      localStorage.setItem('name', user.data.user.name);
+      localStorage.setItem('email', user.data.user.email);
+      toast.success('Logged in successfully.');
+      setIsAuthenticated(true);
+      setTimeout(() => {
+        close();
+      }, 5000);
+    },
+    onError: (err) => {
+      if (err.message === 'Unauthorized: Invalid email or password') {
+        toast.error('Unauthorized: Invalid email or password');
+        close();
+      } else {
+        toast.error(err.message);
+        close();
+      }
+    },
+  });
+
+  return { login, isLoading };
+}

@@ -1,19 +1,20 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useLoginContext } from '../../context/login/LoginContext';
 
 function ProtectedRoute({ children }) {
   const navigate = useNavigate();
-
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const { isAuthenticated, setIsAuthenticated } = useLoginContext();
 
   useEffect(() => {
     const authToken = localStorage.getItem('authToken');
     if (authToken) {
       setIsAuthenticated(true);
     } else {
+      setIsAuthenticated(false);
       navigate('/login');
     }
-  }, [navigate]);
+  }, [navigate, setIsAuthenticated]);
 
   if (isAuthenticated) return children;
   return null;
