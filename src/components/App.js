@@ -1,5 +1,7 @@
+import { BrowserRouter } from 'react-router-dom';
+
 function App() {
-  return <div className='text-3xl font-bold underline'>App</div>;
+  return <BrowserRouter></BrowserRouter>;
 }
 
 export default App;
