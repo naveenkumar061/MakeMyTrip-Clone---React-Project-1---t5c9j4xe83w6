@@ -1,5 +1,5 @@
-import { FaAngleDown } from "react-icons/fa";
-import { useHotelsMainContext } from "../../../../../context/Hotels/HotelsMainContext";
+import { FaAngleDown } from 'react-icons/fa';
+import { useHotelsMainContext } from '../../../../../context/Resort/HotelsMainContext';
 
 function HotelAdultNumber() {
   const { noOfAdults, handleAdultQuantity } = useHotelsMainContext();

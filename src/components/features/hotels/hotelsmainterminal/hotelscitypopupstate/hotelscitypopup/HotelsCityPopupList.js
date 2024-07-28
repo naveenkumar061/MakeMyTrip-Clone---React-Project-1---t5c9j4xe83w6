@@ -1,5 +1,5 @@
-import { CiLocationOn } from "react-icons/ci";
-import { useHotelsMainContext } from "../../../../../context/Hotels/HotelsMainContext";
+import { CiLocationOn } from 'react-icons/ci';
+import { useHotelsMainContext } from '../../../../../context/Resort/HotelsMainContext';
 
 function HotelsCityPopupList({ cityState }) {
   const { chooseHotelCity } = useHotelsMainContext();

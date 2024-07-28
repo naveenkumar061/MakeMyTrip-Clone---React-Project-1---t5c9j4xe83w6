@@ -98,7 +98,7 @@ function FlightsMainTerminal() {
         <div
           className={`${
             isFromPopupOpen && 'bg-blue-100 font-medium text-blue-400'
-          } ${commonBorderStyle} ${commonPadding} ${commonHoverStyle} w-full md:w-[40%]`}
+          } ${commonBorderStyle} ${commonPadding} ${commonHoverStyle} w-full`}
           onClick={handleFromClick}
           ref={fromRef}
         >
@@ -111,7 +111,7 @@ function FlightsMainTerminal() {
         <div
           className={`flex-grow ${commonBorderStyle} ${
             isToPopupOpen && 'bg-blue-100 font-medium text-blue-400'
-          } ${commonPadding} ${commonHoverStyle} w-full md:w-[40%]`}
+          } ${commonPadding} ${commonHoverStyle} w-full`}
           onClick={handleToClick}
           ref={toRef}
         >
@@ -124,7 +124,7 @@ function FlightsMainTerminal() {
         <div
           className={`flex-grow ${commonBorderStyle} ${commonPadding} ${
             isFlightsDatePopupOpen && 'bg-blue-100 font-medium text-blue-400'
-          } ${commonHoverStyle} w-full md:w-[20%]`}
+          } ${commonHoverStyle} w-full`}
           onClick={handleDeparture}
           ref={dateRef}
         >
@@ -142,7 +142,7 @@ function FlightsMainTerminal() {
         <div
           className={`flex-grow ${commonPadding} ${commonHoverStyle} ${
             isFlightsClassPopupOpen && 'bg-blue-100 font-medium text-blue-400'
-          } w-full md:w-[28%]`}
+          } w-full`}
           ref={classRef}
           onClick={handleClass}
         >
@@ -159,7 +159,7 @@ function FlightsMainTerminal() {
 
       {/* Swap locations button */}
       <button
-        className="absolute translate-x-32 top-[25%] z-10 flex h-10 w-10 items-center justify-center rounded-full bg-white text-lg font-bold text-blue-500 shadow-md right-[67%] sm:right-[86%] md:right-[80.5%] xl:right-[76.75%] lg:right-[78%] md:top-[40%]"
+        className="absolute top-[22.5%] right-1/2 sm:top-[45%] sm:left-[22.5%] lg:top-[45%] lg:left-[22.95%] xl:left-[22.125%] z-10 flex h-10 w-10 items-center justify-center rounded-full bg-white text-lg font-bold text-blue-500 shadow-md"
         onClick={handleMainArrowButtonClick}
       >
         <PiArrowsLeftRightLight className="text-lg font-bold text-blue-500" />

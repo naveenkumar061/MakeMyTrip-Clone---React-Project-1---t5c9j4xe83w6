@@ -1,8 +1,8 @@
-import { useHotelsMainContext } from "../../../../../context/Hotels/HotelsMainContext";
-import HotelAdultNumber from "./HotelAdultNumber";
-import HotelAdultQtyPopup from "./HotelAdultQtyPopup";
-import HotelRS from "./HotelRS";
-import HotelRoomQtyPopup from "./HotelRoomQtyPopup";
+import { useHotelsMainContext } from '../../../../../context/Resort/HotelsMainContext';
+import HotelAdultNumber from './HotelAdultNumber';
+import HotelAdultQtyPopup from './HotelAdultQtyPopup';
+import HotelRS from './HotelRS';
+import HotelRoomQtyPopup from './HotelRoomQtyPopup';
 
 function HotelResvPopup() {
   const { isRoomQuantityPopup, isAdultQuantityPopup, handleReservationClose } =

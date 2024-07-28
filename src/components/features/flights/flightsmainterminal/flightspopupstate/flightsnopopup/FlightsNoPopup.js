@@ -1,8 +1,8 @@
 // Import React and other necessary libraries
-import React from "react";
+import React from 'react';
 
 // Import context hook for accessing flight data
-import { useFlightsMainContext } from "../../../../../context/Flights/FlightsMainContext";
+import { useFlightsMainContext } from '../../../../../context/Flights/FlightsMainContext';
 
 // FlightsNoPopup component definition
 function FlightsNoPopup({ destination }) {
@@ -22,7 +22,7 @@ function FlightsNoPopup({ destination }) {
   let city, name, country, iataCode;
 
   // Set flight information for "from" destination
-  if (destination === "from") {
+  if (destination === 'from') {
     city = fromCity;
     name = fromName;
     country = fromCountry;
@@ -30,7 +30,7 @@ function FlightsNoPopup({ destination }) {
   }
 
   // Set flight information for "to" destination
-  if (destination === "to") {
+  if (destination === 'to') {
     city = toCity;
     name = toName;
     country = toCountry;

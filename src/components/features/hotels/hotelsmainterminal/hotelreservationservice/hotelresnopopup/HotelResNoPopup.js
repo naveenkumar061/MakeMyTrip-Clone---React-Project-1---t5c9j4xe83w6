@@ -1,4 +1,4 @@
-import { useHotelsMainContext } from "../../../../../context/Hotels/HotelsMainContext";
+import { useHotelsMainContext } from '../../../../../context/Resort/HotelsMainContext';
 
 function HotelResNoPopup() {
   const { noOfRooms, noOfAdults } = useHotelsMainContext();

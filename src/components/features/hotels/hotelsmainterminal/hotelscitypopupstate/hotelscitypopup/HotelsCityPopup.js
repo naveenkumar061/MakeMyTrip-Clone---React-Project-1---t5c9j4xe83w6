@@ -1,8 +1,8 @@
-import { CiSearch } from "react-icons/ci";
-import { useHotelsMainContext } from "../../../../../context/Hotels/HotelsMainContext";
-import { useEffect, useRef, useState } from "react";
-import HotelsCityPopupList from "./HotelsCityPopupList";
-import Spinner from "../../../../../ui/Spinner";
+import { CiSearch } from 'react-icons/ci';
+import { useEffect, useRef, useState } from 'react';
+import HotelsCityPopupList from './HotelsCityPopupList';
+import { useHotelsMainContext } from '../../../../../context/Resort/HotelsMainContext';
+import Spinner from '../../../../../utils/Spinner';
 
 function HotelsCityPopup() {
   const { hotelsLocation, hotelsLocationsLoading } = useHotelsMainContext();
@@ -12,7 +12,7 @@ function HotelsCityPopup() {
   const cityLocation = hotelsLocation?.data.cities;
 
   const inputRef = useRef(null);
-  const [search, setSearch] = useState("");
+  const [search, setSearch] = useState('');
   const [filteredCities, setFilteredCities] = useState(cityLocation);
 
   useEffect(() => {
@@ -22,8 +22,8 @@ function HotelsCityPopup() {
   useEffect(() => {
     setFilteredCities(
       cityLocation.filter((city) =>
-        city.cityState.toLowerCase().includes(search.toLowerCase()),
-      ),
+        city.cityState.toLowerCase().includes(search.toLowerCase())
+      )
     );
   }, [search, cityLocation]);
 
@@ -40,7 +40,7 @@ function HotelsCityPopup() {
           onChange={(e) => {
             if (e.target.value.length > 0 && /^[a-zA-Z]+$/.test(e.target.value))
               setSearch(e.target.value);
-            else setSearch("");
+            else setSearch('');
           }}
         />
       </div>

@@ -1,4 +1,4 @@
-import { useHotelsMainContext } from "../../../../../context/Hotels/HotelsMainContext";
+import { useHotelsMainContext } from '../../../../../context/Resort/HotelsMainContext';
 
 function HotelRoomQtyPopup() {
   const { noOfRooms, handleNumberOfRooms } = useHotelsMainContext();
@@ -10,7 +10,9 @@ function HotelRoomQtyPopup() {
       {room.map((item, index) => (
         <div
           key={index}
-          className={`${noOfRooms === item && "bg-gray-200"} px-4 py-1 text-center hover:bg-gray-200`}
+          className={`${
+            noOfRooms === item && 'bg-gray-200'
+          } px-4 py-1 text-center hover:bg-gray-200`}
           onClick={(event) => handleNumberOfRooms(event, item)}
         >
           {item}

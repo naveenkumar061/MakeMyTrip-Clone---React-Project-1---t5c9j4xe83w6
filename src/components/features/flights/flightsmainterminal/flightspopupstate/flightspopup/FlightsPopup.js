@@ -34,10 +34,12 @@ function FlightsPopup({ destination }) {
   }, [search, setCityName, cityName]);
 
   return (
+    // ${
+    // destination === 'from' ? 'left-0' : 'right-[32.45%]'}
     <div
-      className={`absolute ${
-        destination === 'from' ? 'left-0' : 'right-[32.45%]'
-      } z-30 w-[35%] rounded-md border border-gray-400 bg-white text-gray-800 shadow-lg`}
+      className={`${
+        destination === 'from' ? 'left-0' : 'sm:left-[20%]'
+      } absolute sm:w-[30%] left-0 z-30 rounded-md border border-gray-400 bg-white text-gray-800 shadow-lg w-full`}
     >
       <div className="flex items-center justify-between gap-4 border-b border-gray-400 p-2">
         <CiSearch className="font-extrabold text-black" />

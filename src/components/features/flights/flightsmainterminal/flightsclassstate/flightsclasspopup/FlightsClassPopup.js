@@ -1,14 +1,14 @@
 // Import statements
-import React from "react"; // Importing React from the react library
-import { useFlightsMainContext } from "../../../../../context/Flights/FlightsMainContext"; // Importing context from FlightsMainContext
-import FlightsClassClasses from "./FlightsClassClasses"; // Importing FlightsClassClasses component
-import FlyCT from "./FlyCT"; // Importing FlightsClassTravellers component
+import React from 'react'; // Importing React from the react library
+import { useFlightsMainContext } from '../../../../../context/Flights/FlightsMainContext'; // Importing context from FlightsMainContext
+import FlightsClassClasses from './FlightsClassClasses'; // Importing FlightsClassClasses component
+import FlyCT from './FlyCT'; // Importing FlightsClassTravellers component
 
 function FlightsClassPopup() {
   const { handleClassClose } = useFlightsMainContext(); // Destructuring handleClassClose from the context
 
   return (
-    <div className="absolute right-0 z-10 flex h-auto w-1/3 flex-col gap-4 rounded-xl border border-gray-400 bg-white p-4 text-black">
+    <div className="absolute z-10 flex h-auto w-full left-0 sm:left-[70%] sm:w-[30%] flex-col gap-4 rounded-xl border border-gray-400 bg-white p-4 text-black">
       {/* Container for the popup, styled with Tailwind CSS */}
       <div className="flex items-center justify-between">
         {/* Travellers section with a heading and the FlightsClassTravellers component */}

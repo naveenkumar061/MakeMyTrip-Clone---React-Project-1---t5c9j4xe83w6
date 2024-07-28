@@ -1,4 +1,4 @@
-import { useHotelsMainContext } from "../../../../context/Hotels/HotelsMainContext";
+import { useHotelsMainContext } from '../../../../context/Resort/HotelsMainContext';
 
 function HotelsCheckOutNoPopup() {
   const { yearCheckOut, monthCheckOut, weekdayCheckOut, dayCheckOut } =
