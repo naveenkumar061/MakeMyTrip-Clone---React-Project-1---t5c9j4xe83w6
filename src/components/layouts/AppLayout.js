@@ -47,7 +47,7 @@ function AppLayout() {
   return (
     <div>
       <div
-        className="min-h-screen bg-cover bg-no-repeat text-white"
+        className="min-h-screen h-[1250px] bg-cover bg-no-repeat text-white"
         style={{ backgroundImage: `url(${backgroundImage})` }}
       >
         {showNavFixedMainBar && <NavFixedMainBar />}
