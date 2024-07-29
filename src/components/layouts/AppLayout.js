@@ -13,7 +13,7 @@ function AppLayout() {
   useEffect(() => {
     function handleResize() {
       const width = window.innerWidth;
-      if (width <= 1350) {
+      if (width <= 1200) {
         setShowNavScrollMainBar(true);
         setShowNavFixedMainBar(false);
       } else {
@@ -25,7 +25,7 @@ function AppLayout() {
     function handleScroll() {
       const height = window.scrollY;
       const width = window.innerWidth;
-      if (height >= 150 || (width <= 1350 && height >= 0)) {
+      if (height >= 150 || (width <= 1200 && height >= 0)) {
         setShowNavScrollMainBar(true);
       } else {
         setShowNavScrollMainBar(false);
