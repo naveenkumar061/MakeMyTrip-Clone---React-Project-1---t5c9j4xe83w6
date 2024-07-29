@@ -159,7 +159,7 @@ function FlightsMainTerminal() {
 
       {/* Swap locations button */}
       <button
-        className="absolute top-[22.5%] right-1/2 sm:top-[45%] sm:left-[22.5%] lg:top-[45%] lg:left-[22.95%] xl:left-[22.125%] z-10 flex h-10 w-10 items-center justify-center rounded-full bg-white text-lg font-bold text-blue-500 shadow-md"
+        className="absolute top-[22.5%] right-1/2 md:top-[45%] md:right-[72%] min-850:right-[72.5%] lg:top-[45%] lg:left-[22.95%] min-1200:left-[28.5%] min-1240:left-[23.75%] z-10 flex h-10 w-10 items-center justify-center rounded-full bg-white text-lg font-bold text-blue-500 shadow-md"
         onClick={handleMainArrowButtonClick}
       >
         <PiArrowsLeftRightLight className="text-lg font-bold text-blue-500" />

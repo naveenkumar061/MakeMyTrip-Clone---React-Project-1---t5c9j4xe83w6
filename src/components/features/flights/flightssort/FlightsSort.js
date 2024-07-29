@@ -48,7 +48,7 @@ function FlightsSort({ isLoading, minimumDuration, lowestFlightPrice }) {
 
   // Render component JSX
   return (
-    <div className="relative bottom-28 flex min-h-[150px] w-[60vw] flex-wrap items-center justify-between gap-4 bg-white p-16">
+    <div className="relative md:bottom-28 mb-5 w-[90%] md:justify-center flex min-h-[150px] md:w-[65vw] flex-wrap items-center gap-4 bg-white p-4">
       <div
         className={
           cheap

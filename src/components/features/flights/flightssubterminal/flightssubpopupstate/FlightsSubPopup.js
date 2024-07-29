@@ -23,7 +23,7 @@ function FlightsSubPopup({ destination }) {
   }, [search, setCityName, cityName]);
 
   return (
-    <div className="relative z-10 bg-white">
+    <div className="relative z-10 bg-white w-full">
       <div className="flex items-center p-2 shadow-md">
         <CiSearch className="font-extrabold text-black" />
         <input

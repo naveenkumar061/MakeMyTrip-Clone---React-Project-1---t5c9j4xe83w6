@@ -1,9 +1,9 @@
 // Importing React dependencies and third-party libraries
-import { IoMdClose } from "react-icons/io";
-import toast from "react-hot-toast";
+import { IoMdClose } from 'react-icons/io';
+import toast from 'react-hot-toast';
 
 // Importing custom components
-import FilterGroup from "../flightsfilter/FilterGroup";
+import FilterGroup from '../flightsfilter/FilterGroup';
 
 // Main function component definition for FlightsFilter
 function FlightsFilter({
@@ -22,87 +22,87 @@ function FlightsFilter({
     const filteredFlights = list.filter((flight) => flight[property] === value);
     if (!filteredFlights.length) return 0;
     const price = Math.min(
-      ...filteredFlights.map((flight) => flight.ticketPrice),
+      ...filteredFlights.map((flight) => flight.ticketPrice)
     );
     return price;
   }
 
   // Calculate the lowest prices for different criteria
-  const lowestNonStopPrice = minPrice(flightList, "stops", 0);
-  const lowestSingleStopPrice = minPrice(flightList, "stops", 1);
+  const lowestNonStopPrice = minPrice(flightList, 'stops', 0);
+  const lowestSingleStopPrice = minPrice(flightList, 'stops', 1);
 
   const lowestIndigoFlightPrice = minPrice(
     flightList,
-    "aircraftModel",
-    "65144571e16702a399cea7fa",
+    'aircraftModel',
+    '65144571e16702a399cea7fa'
   );
   const lowestVistaraFlightPrice = minPrice(
     flightList,
-    "aircraftModel",
-    "65144571e16702a399cea7fc",
+    'aircraftModel',
+    '65144571e16702a399cea7fc'
   );
   const lowestAirIndiaFlightPrice = minPrice(
     flightList,
-    "aircraftModel",
-    "65144571e16702a399cea7f8",
+    'aircraftModel',
+    '65144571e16702a399cea7f8'
   );
   const lowestSpiceJetFlightPrice = minPrice(
     flightList,
-    "aircraftModel",
-    "65144571e16702a399cea7f9",
+    'aircraftModel',
+    '65144571e16702a399cea7f9'
   );
   const lowestAkasaAirFlightPrice = minPrice(
     flightList,
-    "aircraftModel",
-    "65144571e16702a399cea7f7",
+    'aircraftModel',
+    '65144571e16702a399cea7f7'
   );
   const lowestAirIndiaExpressFlightPrice = minPrice(
     flightList,
-    "aircraftModel",
-    "65144571e16702a399cea7fb",
+    'aircraftModel',
+    '65144571e16702a399cea7fb'
   );
 
   // Defining filter options for various categories
   const popularFilters = [
-    { name: "Non Stop", price: lowestNonStopPrice },
-    { icon: 3, name: "IndiGo Airline", price: lowestIndigoFlightPrice },
-    { icon: 1, name: "Air India Airline", price: lowestAirIndiaFlightPrice },
-    { name: "1 Stop", price: lowestSingleStopPrice },
+    { name: 'Non Stop', price: lowestNonStopPrice },
+    { icon: 3, name: 'IndiGo Airline', price: lowestIndigoFlightPrice },
+    { icon: 1, name: 'Air India Airline', price: lowestAirIndiaFlightPrice },
+    { name: '1 Stop', price: lowestSingleStopPrice },
   ];
 
   const stopsFromSorce = [
-    { name: "Non Stop", price: lowestNonStopPrice },
-    { name: "1 Stop", price: lowestSingleStopPrice },
+    { name: 'Non Stop', price: lowestNonStopPrice },
+    { name: '1 Stop', price: lowestSingleStopPrice },
   ];
 
   const airlines = [
-    { icon: 0, name: "Akasa Air Airline", price: lowestAkasaAirFlightPrice },
-    { icon: 1, name: "Air India Airline", price: lowestAirIndiaFlightPrice },
-    { icon: 2, name: "SpiceJet Airline", price: lowestSpiceJetFlightPrice },
-    { icon: 3, name: "IndiGo Airline", price: lowestIndigoFlightPrice },
+    { icon: 0, name: 'Akasa Air Airline', price: lowestAkasaAirFlightPrice },
+    { icon: 1, name: 'Air India Airline', price: lowestAirIndiaFlightPrice },
+    { icon: 2, name: 'SpiceJet Airline', price: lowestSpiceJetFlightPrice },
+    { icon: 3, name: 'IndiGo Airline', price: lowestIndigoFlightPrice },
     {
       icon: 4,
-      name: "Air India Express Airline",
+      name: 'Air India Express Airline',
       price: lowestAirIndiaExpressFlightPrice,
     },
-    { icon: 5, name: "Vistara Airline", price: lowestVistaraFlightPrice },
+    { icon: 5, name: 'Vistara Airline', price: lowestVistaraFlightPrice },
   ];
 
   // Handler for price range change
   function handlePriceRange(e) {
     const newPrice = Number(e.target.value);
     setMaximumPrice(newPrice);
-    onAddFilter("changed", true);
+    onAddFilter('changed', true);
     toast.dismiss();
     toast.success(`Flights Info ₹ ${lowestFlightPrice} - ₹ ${newPrice}`, {
       style: {
-        position: "relative",
-        top: "57.5px",
+        position: 'relative',
+        top: '57.5px',
       },
     });
   }
 
-  let filterOptions = filterItems.filter((item) => !item.includes("changed"));
+  let filterOptions = filterItems.filter((item) => !item.includes('changed'));
 
   // Handlers for removing filters
   function handleRemoveItem(item) {
@@ -115,7 +115,7 @@ function FlightsFilter({
   // Rendering the filter component
   return (
     <div
-      className={`relative bottom-24 z-[1] h-fit w-[20vw] bg-white p-4 shadow-lg`}
+      className={`relative w-[90%] md:bottom-24 z-[1] h-fit md:w-[20vw] bg-white p-4 shadow-lg`}
     >
       {filterOptions.length > 0 && (
         <>

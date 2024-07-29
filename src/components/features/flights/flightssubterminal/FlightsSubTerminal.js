@@ -22,7 +22,7 @@ import SpinnerMini from '../../../utils/SpinnerMini';
 import { airlineData } from '../../../assets/data/AirlineData';
 
 const commonClass =
-  'relative h-14 flex-col gap-2 w-[20%] rounded-md bg-[#ffffff1a] px-4 font-semibold uppercase text-left cursor-pointer';
+  'relative h-14 flex-col gap-2 w-[20%] rounded-md bg-[#ffffff1a] px-4 font-semibold uppercase text-left cursor-pointer items-center justify-center';
 
 function FlightsSubTerminal() {
   // Destructuring values from FlightsMainContext
@@ -226,8 +226,12 @@ function FlightsSubTerminal() {
   return (
     <div>
       {/* Flight Search Form */}
-      <div className="flex h-[350px] items-center justify-center gap-4 bg-gradient-to-t from-[#15457b] to-[#051423] text-sm text-blue-400">
-        <div className={commonClass} onClick={handleFromClick} ref={fromRef}>
+      <div className="flex flex-col items-center justify-center gap-4 p-4 md:h-[350px] md:items-center md:flex-row bg-gradient-to-t from-[#15457b] to-[#051423] text-sm text-blue-400">
+        <div
+          className={commonClass + ' h-1/4 w-full'}
+          onClick={handleFromClick}
+          ref={fromRef}
+        >
           <p>From</p>
           <p className="text-white">
             {fromCity}, {fromCountry}
@@ -237,21 +241,33 @@ function FlightsSubTerminal() {
         <div onClick={handleMainArrowButtonClick} className="cursor-pointer">
           <PiArrowsLeftRightLight />
         </div>
-        <div className={commonClass} onClick={handleToClick} ref={toRef}>
+        <div
+          className={commonClass + ' h-1/4 w-full'}
+          onClick={handleToClick}
+          ref={toRef}
+        >
           <p>To</p>
           <p className="text-white">
             {toCity}, {toCountry}
           </p>
           {isToPopupOpen && <FlightsSubPopup destination="to" />}
         </div>
-        <div className={commonClass} onClick={handleDeparture} ref={dateRef}>
+        <div
+          className={commonClass + ' h-1/4 w-full'}
+          onClick={handleDeparture}
+          ref={dateRef}
+        >
           <p>Depart</p>
           <p className="text-white">
             {weekday.slice(0, 3)}, {month} {day}, {longYear}
           </p>
           {isFlightsDatePopupOpen && <FlightsSubDatePopup />}
         </div>
-        <div className={commonClass} onClick={handleClass} ref={classRef}>
+        <div
+          className={commonClass + ' h-1/4 w-full'}
+          onClick={handleClass}
+          ref={classRef}
+        >
           <p>Passenger & Class</p>
           <p className="text-white">
             {number} {classType}
@@ -259,7 +275,7 @@ function FlightsSubTerminal() {
           {isFlightsClassPopupOpen && <FlightsSubClassPopup />}
         </div>
         <button
-          className="text-md m-[20px] flex h-[40px] w-[10%] items-center justify-center rounded-[35px] bg-gradient-to-r from-[#53b2fe] to-[#065af3] p-3 font-bold uppercase text-white"
+          className="text-md m-[20px] flex md:h-[40px] md:w-[10%] items-center justify-center rounded-[35px] bg-gradient-to-r from-[#53b2fe] to-[#065af3] p-3 font-bold uppercase text-white h-fit w-full"
           onClick={handleSubSearch}
         >
           Search
@@ -267,7 +283,7 @@ function FlightsSubTerminal() {
       </div>
 
       {/* Flights Results Section */}
-      <div className="relative z-[1] flex w-full justify-center gap-8 bg-gray-200">
+      <div className="relative z-[1] flex w-full flex-col md:flex-row items-center md:items-start justify-center gap-8 bg-gray-200">
         <FlightsFilter
           fromCurrentCity={fromCurrentCity}
           lowestFlightPrice={lowestFlightPrice}
@@ -280,7 +296,7 @@ function FlightsSubTerminal() {
           maximumPrice={maximumPrice}
         />
         <div>
-          <h2 className="relative bottom-28 z-20 py-4 pr-4 text-3xl font-semibold text-white">
+          <h2 className="relative md:bottom-28 z-20 py-4 pr-4 text-3xl font-semibold md:text-white text-black">
             Flights from {fromCurrentCity} to {toCurrentCity}
           </h2>
           <FlightsSort
