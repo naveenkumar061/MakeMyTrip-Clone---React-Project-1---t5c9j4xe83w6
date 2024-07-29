@@ -93,16 +93,16 @@ function FlightsMainTerminal() {
       <p className="py-2 text-right">Book International and Domestic Flights</p>
 
       {/* Main container for flight search form */}
-      <div className="relative flex rounded-md border-2 border-gray-200 flex-col md:flex-row">
+      <div className="flex-grow relative flex rounded-md border-2 border-gray-200 flex-col md:flex-row">
         {/* From field */}
         <div
           className={`${
             isFromPopupOpen && 'bg-blue-100 font-medium text-blue-400'
-          } ${commonBorderStyle} ${commonPadding} ${commonHoverStyle} w-full`}
+          } ${commonBorderStyle} ${commonPadding} ${commonHoverStyle} w-full md:w-[29.25%]`}
           onClick={handleFromClick}
           ref={fromRef}
         >
-          <p>From</p>
+          <p className="md:w-[450px]">From</p>
           {!isFromPopupOpen && <FlightsNoPopup destination="from" />}
           {isFromPopupOpen && <FlightsPopup destination="from" />}
         </div>
@@ -111,11 +111,11 @@ function FlightsMainTerminal() {
         <div
           className={`flex-grow ${commonBorderStyle} ${
             isToPopupOpen && 'bg-blue-100 font-medium text-blue-400'
-          } ${commonPadding} ${commonHoverStyle} w-full`}
+          } ${commonPadding} ${commonHoverStyle} w-full md:w-[29.25%]`}
           onClick={handleToClick}
           ref={toRef}
         >
-          <p>To</p>
+          <p className="md:w-[450px]">To</p>
           {!isToPopupOpen && <FlightsNoPopup destination="to" />}
           {isToPopupOpen && <FlightsPopup destination="to" />}
         </div>
