@@ -16,8 +16,12 @@ function PageSwitcher({ topRightNavItem }) {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (isAuthenticated) setName(localStorage.getItem('name'));
-    console.log(isAuthenticated);
+    const storedName = localStorage.getItem('name');
+    const authToken = localStorage.getItem('authToken');
+    if (storedName && authToken) {
+      setName(storedName);
+      setIsAuthenticated(true);
+    }
   }, [isAuthenticated]);
 
   function handleAvatarClick() {
