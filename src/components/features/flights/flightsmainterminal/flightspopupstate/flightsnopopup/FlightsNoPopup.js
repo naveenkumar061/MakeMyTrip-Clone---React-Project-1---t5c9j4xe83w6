@@ -39,7 +39,7 @@ function FlightsNoPopup({ destination }) {
 
   // Render the flight information
   return (
-    <div className="md:w-[450px]">
+    <div>
       <h1 className="overflow-hidden text-ellipsis text-3xl font-bold">
         {city}
       </h1>
