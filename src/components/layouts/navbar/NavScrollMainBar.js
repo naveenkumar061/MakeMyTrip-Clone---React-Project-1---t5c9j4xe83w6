@@ -20,7 +20,7 @@ function NavScrollMainBar() {
   const [openModal, setOpenModal] = useState(false);
 
   useEffect(() => {
-    if (isAuthenticated) setName(localStorage.getItem('name'));
+    if (isAuthenticated) setName(sessionStorage.getItem('name'));
     console.log(isAuthenticated);
   }, [isAuthenticated]);
 

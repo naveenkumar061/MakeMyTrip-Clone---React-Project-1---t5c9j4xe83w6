@@ -8,9 +8,9 @@ export function useLogin(close) {
   const { mutate: login, isLoading } = useMutation({
     mutationFn: ({ email, password }) => loginUser({ email, password }),
     onSuccess: (user) => {
-      localStorage.setItem('authToken', user.token);
-      localStorage.setItem('name', user.data.user.name);
-      localStorage.setItem('email', user.data.user.email);
+      sessionStorage.setItem('authToken', user.token);
+      sessionStorage.setItem('name', user.data.user.name);
+      sessionStorage.setItem('email', user.data.user.email);
       toast.success('Logged in successfully.');
       setIsAuthenticated(true);
       setTimeout(() => {

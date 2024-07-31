@@ -77,11 +77,11 @@ function HotelsMainTerminal() {
   return (
     <div className="relative my-6 max-1200:mb-0">
       <p className="h-[41.3333px] py-2"></p>
-      <div className="relative flex rounded-md border-2 border-gray-200 max-1200:flex-col">
+      <div className="relative flex rounded-md border-2 border-gray-200 flex-col md:flex-row">
         <div
           className={`flex-grow pr-8 ${
             isCityHotelPopupOpen && 'bg-blue-100 font-medium text-blue-400'
-          } ${commonBorderStyle} ${commonPadding} ${commonHoverStyle} w-[30.95%] max-1200:w-full`}
+          } ${commonBorderStyle} ${commonPadding} ${commonHoverStyle} w-full md:w-1/4`}
           onClick={handleCityClick}
           ref={cityRef}
         >
@@ -90,9 +90,9 @@ function HotelsMainTerminal() {
           {isCityHotelPopupOpen && <HotelsCityPopup />}
         </div>
         <div
-          className={`w-[170.802px] flex-grow ${commonBorderStyle} ${commonPadding} ${
+          className={`flex-grow ${commonBorderStyle} ${commonPadding} ${
             isEntryDateHotelPopupOpen && 'bg-blue-100 font-medium text-blue-400'
-          } ${commonHoverStyle}`}
+          } ${commonHoverStyle} w-full md:w-[170.802px]`}
           onClick={handleEntryDate}
           ref={entryDateRef}
         >
@@ -106,7 +106,7 @@ function HotelsMainTerminal() {
           {isEntryDateHotelPopupOpen && <HotelsCheckInPopup />}
         </div>
         <div
-          className={`w-[170.802px] flex-grow ${commonBorderStyle} ${commonPadding} ${
+          className={`flex-grow w-full md:w-[170.802px] ${commonBorderStyle} ${commonPadding} ${
             isExitDateHotelPopupOpen && 'bg-blue-100 font-medium text-blue-400'
           } ${commonHoverStyle}`}
           onClick={handleExitDate}
@@ -122,7 +122,7 @@ function HotelsMainTerminal() {
           {isExitDateHotelPopupOpen && <HotelsCheckOutPopup />}
         </div>
         <div
-          className={`w-[247.885px] flex-grow ${commonPadding} ${commonHoverStyle} ${
+          className={`w-full md:w-[247.885px] flex-grow ${commonPadding} ${commonHoverStyle} ${
             isReservationHotelPopupOpen &&
             'bg-blue-100 font-medium text-blue-400'
           }`}

@@ -16,8 +16,8 @@ function PageSwitcher({ topRightNavItem }) {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const storedName = localStorage.getItem('name');
-    const authToken = localStorage.getItem('authToken');
+    const storedName = sessionStorage.getItem('name');
+    const authToken = sessionStorage.getItem('authToken');
     if (storedName && authToken) {
       setName(storedName);
       setIsAuthenticated(true);
