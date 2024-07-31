@@ -93,7 +93,7 @@ function FlightsMainTerminal() {
       <p className="py-2 text-right">Book International and Domestic Flights</p>
 
       {/* Main container for flight search form */}
-      <div className="flex-grow relative flex rounded-md border-2 border-gray-200 flex-col md:flex-row">
+      <div className="w-full relative flex rounded-md border-2 border-gray-200 flex-col md:flex-row">
         {/* From field */}
         <div
           className={`${
