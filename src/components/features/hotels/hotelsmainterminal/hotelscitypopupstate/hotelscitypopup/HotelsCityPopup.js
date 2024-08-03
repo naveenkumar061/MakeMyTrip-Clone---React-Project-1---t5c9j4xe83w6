@@ -28,7 +28,7 @@ function HotelsCityPopup() {
   }, [search, cityLocation]);
 
   return (
-    <div className="absolute left-0 z-30 w-[40%] rounded-md border border-gray-400 bg-white text-gray-800 shadow-lg">
+    <div className="absolute left-0 z-30 md:w-[40%] w-full rounded-md border border-gray-400 bg-white text-gray-800 shadow-lg">
       <div className="flex items-center justify-between gap-4 border-b border-gray-400 p-2">
         <CiSearch className="font-extrabold text-black" />
         <input

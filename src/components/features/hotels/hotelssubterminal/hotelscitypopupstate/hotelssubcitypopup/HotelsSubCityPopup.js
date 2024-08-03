@@ -28,7 +28,7 @@ function HotelsSubCityPopup() {
   }, [search, cityLocation]);
 
   return (
-    <div className="absolute left-0 top-14 z-30 rounded-md border border-gray-400 bg-white text-gray-800 shadow-lg">
+    <div className="absolute left-0 w-full md:w-[30vw] top-14 z-30 rounded-md border border-gray-400 bg-white text-gray-800 shadow-lg">
       <div className="flex items-center justify-between gap-4 border-b border-gray-400 p-2">
         <CiSearch className="font-extrabold text-black" />
         <input
@@ -46,7 +46,7 @@ function HotelsSubCityPopup() {
       </div>
       {hotelsLocationsLoading && <Spinner />}
       {!hotelsLocationsLoading && (
-        <div className="h-[38vh] w-[25vw] overflow-y-auto">
+        <div className="h-[38vh] w-full md:w-[30vw] overflow-y-auto">
           {filteredCities.map((city) => (
             <HotelList key={city._id} cityState={city.cityState} />
           ))}

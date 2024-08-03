@@ -15,7 +15,7 @@ function HotelsFilter() {
     filter.map((item) => onAddFilter(item, false));
   }
   return (
-    <div className="border-gray absolute right-[72%] h-fit w-[18vw] border bg-white px-8 py-4">
+    <div className="border-gray h-fit w-full md:w-[28vw] border bg-white px-8 py-4">
       {filter.length > 0 && (
         <>
           <div className="flex justify-between">
@@ -28,8 +28,11 @@ function HotelsFilter() {
             </p>
           </div>
           <div className="inline p-2">
-            {filter.map((item) => (
-              <div className="mb-4 flex items-center justify-between rounded-md bg-blue-200 p-2 text-sm">
+            {filter.map((item, index) => (
+              <div
+                className="mb-4 flex items-center justify-between rounded-md bg-blue-200 p-2 text-sm"
+                key={index}
+              >
                 <p>{item}</p>
                 <IoMdClose
                   className="cursor-pointer text-lg text-blue-500 hover:text-red-500"

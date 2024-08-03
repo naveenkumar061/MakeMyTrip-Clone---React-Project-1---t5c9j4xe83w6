@@ -13,13 +13,20 @@ function HotelsCheckOutPopup() {
       onClick={(e) => e.stopPropagation()}
       sx={{
         position: 'absolute',
-        bottom: 0,
-        left: '55%',
+        width: '100%',
+        left: 0,
         zIndex: 10, // Ensure it appears above other elements
         backgroundColor: 'white',
         boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.1)',
         borderRadius: '8px',
         padding: '10px',
+        '@media (min-width: 768px)': {
+          display: 'flex',
+          alignItems: 'center',
+          bottom: 0,
+          left: '50%',
+          width: '25%',
+        },
       }}
     >
       <LocalizationProvider dateAdapter={AdapterDateFns}>
@@ -30,6 +37,7 @@ function HotelsCheckOutPopup() {
           onAccept={handleCheckOutDateClose}
           disablePast
           minDate={dateCheckOut}
+          sx={{ width: '100%' }}
         />
       </LocalizationProvider>
     </Box>

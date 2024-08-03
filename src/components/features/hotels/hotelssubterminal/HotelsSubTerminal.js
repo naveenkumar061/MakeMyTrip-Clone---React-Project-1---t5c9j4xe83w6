@@ -13,7 +13,7 @@ import { useHotelsMainContext } from '../../../context/Resort/HotelsMainContext'
 import Spinner from '../../../utils/Spinner';
 
 const commonClass =
-  'relative h-14 flex-col gap-2 w-[20%] flex rounded-md bg-[#ffffff1a] px-4 font-semibold uppercase text-left cursor-default';
+  'relative h-1/4 flex-col gap-2 w-full md:w-[20%] flex rounded-md bg-[#ffffff1a] px-4 font-semibold uppercase text-left cursor-default p-1';
 
 function HotelsSubTerminal() {
   const {
@@ -77,6 +77,7 @@ function HotelsSubTerminal() {
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
+    console.log(filter);
   }, [filter]);
 
   function handleSubSearch() {
@@ -102,8 +103,8 @@ function HotelsSubTerminal() {
   }
 
   return (
-    <div className="relative w-full">
-      <div className="flex h-[350px] items-center justify-center gap-4 bg-gradient-to-t from-[#15457b] to-[#051423] text-blue-400">
+    <div className="mt-20">
+      <div className="flex flex-col h-fit md:flex-row md:h-[350px] p-4 items-center justify-center gap-4 bg-gradient-to-t from-[#15457b] to-[#051423] text-blue-400 text-sm">
         <div
           className={`${commonClass}`}
           onClick={handleCityClick}
@@ -159,14 +160,14 @@ function HotelsSubTerminal() {
           {isReservationHotelPopupOpen && <HotelSubReservationServicePopup />}
         </div>
         <button
-          className="text-md m-[20px] flex h-[40px] w-[10%] items-center justify-center rounded-[35px] bg-gradient-to-r from-[#53b2fe] to-[#065af3] p-3 font-bold uppercase text-white"
+          className="text-md m-[20px] flex h-[40px] w-fit md:w-[10%] items-center justify-center rounded-[35px] bg-gradient-to-r from-[#53b2fe] to-[#065af3] p-3 font-bold uppercase text-white"
           onClick={handleSubSearch}
         >
           Search
         </button>
       </div>
       <HotelsSort />
-      <div className="relative p-8">
+      <div className="p-8 flex flex-col md:flex-row gap-2 md:justify-center">
         <HotelsFilter />
         {isLoading && <Spinner />}
         {!isLoading && <HotelsInCity hotelsList={hotelsInCity?.data.hotels} />}

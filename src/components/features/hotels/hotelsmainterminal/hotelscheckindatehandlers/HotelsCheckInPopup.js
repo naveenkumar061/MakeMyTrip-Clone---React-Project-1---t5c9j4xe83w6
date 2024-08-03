@@ -12,13 +12,20 @@ function HotelsCheckInPopup() {
       onClick={(e) => e.stopPropagation()}
       sx={{
         position: 'absolute',
-        bottom: 0,
-        left: '35%',
         zIndex: 10, // Ensure it appears above other elements
+        width: '100%',
+        left: 0,
         backgroundColor: 'white',
         boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.1)',
         borderRadius: '8px',
         padding: '10px',
+        '@media (min-width: 768px)': {
+          width: '25%',
+          left: '29.5%',
+          display: 'flex',
+          alignItems: 'center',
+          bottom: 0,
+        },
       }}
     >
       <LocalizationProvider dateAdapter={AdapterDateFns}>
@@ -28,6 +35,7 @@ function HotelsCheckInPopup() {
           onChange={handleCheckInDateChange}
           onAccept={handleCheckInDateClose}
           disablePast
+          sx={{ width: '100%' }}
         />
       </LocalizationProvider>
     </Box>

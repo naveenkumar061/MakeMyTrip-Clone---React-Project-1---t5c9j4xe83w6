@@ -25,9 +25,9 @@ function HotelSubReservationServicePopup() {
         </div>
       </div>
       <div className="z-10 h-[1px] w-full bg-gray-200"></div>
-      <div className=" p-4">
+      <div className="p-4">
         <p
-          className={`relative left-[82.5%] flex h-8 w-[60px] cursor-pointer items-center justify-center rounded-full bg-gradient-to-r from-blue-400 to-blue-600 pb-1 text-center text-white`}
+          className={`relative left-[75%] flex h-8 w-[60px] cursor-pointer items-center justify-center rounded-full bg-gradient-to-r from-blue-400 to-blue-600 pb-1 text-center text-white`}
           onClick={handleReservationClose}
         >
           Apply

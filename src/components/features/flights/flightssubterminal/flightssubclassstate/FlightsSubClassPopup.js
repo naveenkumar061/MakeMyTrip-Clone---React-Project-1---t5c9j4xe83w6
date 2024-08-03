@@ -1,13 +1,13 @@
-import { useFlightsMainContext } from "../../../../context/Flights/FlightsMainContext";
-import FlightsSubClassClasses from "./FlightsSubClassClasses";
-import FlightsSubClassTravellers from "./FlightsSubClassTravellers";
+import { useFlightsMainContext } from '../../../../context/Flights/FlightsMainContext';
+import FlightsSubClassClasses from './FlightsSubClassClasses';
+import FlightsSubClassTravellers from './FlightsSubClassTravellers';
 
 function FlightsSubClassPopup() {
   const { handleClassClose } = useFlightsMainContext();
 
   return (
     <div
-      className={`absolute z-10 flex h-auto w-full flex-col gap-4 rounded-none border border-gray-400 bg-white p-4 text-black`}
+      className={`absolute z-10 flex h-auto w-full flex-col gap-4 left-0 rounded-none border border-gray-400 bg-white p-4 text-black`}
     >
       <div className="flex items-center justify-between">
         <h3>Travellers</h3>

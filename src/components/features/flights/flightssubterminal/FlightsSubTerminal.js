@@ -224,7 +224,7 @@ function FlightsSubTerminal() {
   }
 
   return (
-    <div>
+    <div className="pt-20">
       {/* Flight Search Form */}
       <div className="flex flex-col items-center justify-center gap-4 p-4 md:h-[350px] md:items-center md:flex-row bg-gradient-to-t from-[#15457b] to-[#051423] text-sm text-blue-400">
         <div
