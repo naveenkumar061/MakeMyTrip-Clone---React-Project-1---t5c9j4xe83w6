@@ -5,7 +5,7 @@ import { useHotelsMainContext } from '../../../context/Resort/HotelsMainContext'
 import { pricePerNight } from '../../../assets/data/data-pricePerNight';
 import { userRating } from '../../../assets/data/data-userRating';
 
-function HotelsFilter() {
+function HotelsFilter({ hotelsList }) {
   const { filter, onAddFilter } = useHotelsMainContext();
 
   function handleRemoveItem(item) {
@@ -48,7 +48,7 @@ function HotelsFilter() {
         <h1 className="pb-2 text-lg font-semibold">Price per Night</h1>
         <div>
           {pricePerNight.map((item, index) => (
-            <NightPriceList key={index} item={item} />
+            <NightPriceList key={index} item={item} hotelsList={hotelsList} />
           ))}
         </div>
       </div>
@@ -56,7 +56,7 @@ function HotelsFilter() {
         <h1 className="pb-2 text-lg font-semibold">User Rating</h1>
         <div>
           {userRating.map((item, index) => (
-            <UserRatingList key={index} item={item} />
+            <UserRatingList key={index} item={item} hotelsList={hotelsList} />
           ))}
         </div>
       </div>

@@ -3,7 +3,7 @@ import NavScrollMainBar from './navbar/NavScrollMainBar';
 
 function SubLayout({ children }) {
   return (
-    <div className="flex flex-col">
+    <div>
       <NavScrollMainBar />
       <Outlet />
     </div>

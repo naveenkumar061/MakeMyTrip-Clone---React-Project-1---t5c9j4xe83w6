@@ -45,6 +45,7 @@ function HotelsSubTerminal() {
     handleReservation,
     handleClickOutside,
     sort,
+    setSort,
     filter,
   } = useHotelsMainContext();
 
@@ -54,19 +55,19 @@ function HotelsSubTerminal() {
 
   const [filteredSortedHotels, setFilteredSortedHotels] = useState();
 
-  let { isLoading, hotelsInCity } = useHotelLoc(cityInfo, sort);
+  let { isLoading, hotelsInCity } = useHotelLoc(cityInfo);
 
-  // console.log(hotelsInCity, isLoading);
+  const allHotels = hotelsInCity?.data.hotels;
 
   useEffect(() => {
     setHotelCity(cityInfo);
   }, [cityInfo]);
 
   useEffect(() => {
-    setFilteredSortedHotels(hotelsInCity?.data.hotels);
-  }, [hotelsInCity]);
-
-  console.log(filteredSortedHotels);
+    setFilteredSortedHotels(
+      allHotels?.sort((a, b) => a.name.localeCompare(b.name))
+    );
+  }, [allHotels]);
 
   useEffect(() => {
     document.addEventListener('click', handleClickOutside);
@@ -76,13 +77,128 @@ function HotelsSubTerminal() {
   }, [handleClickOutside]);
 
   useEffect(() => {
+    setFilteredSortedHotels(allHotels);
+  }, [allHotels]);
+
+  useEffect(() => {
+    let filterHotels = '';
+
+    for (let i = 0; i < filter.length; i++) {
+      if (filter[i] === 'Excellent:4.2+')
+        filterHotels = [
+          ...filterHotels,
+          ...allHotels?.filter((hotel) => hotel.rating >= 4.2),
+        ];
+
+      if (filter[i] === 'Very Good:3.5+')
+        filterHotels = [
+          ...filterHotels,
+          ...allHotels?.filter(
+            (hotel) => hotel.rating >= 3.5 && hotel.rating < 4.2
+          ),
+        ];
+
+      if (filter[i] === 'Good:3+')
+        filterHotels = [
+          ...filterHotels,
+          ...allHotels?.filter(
+            (hotel) => hotel.rating >= 3 && hotel.rating < 3.5
+          ),
+        ];
+
+      if (filter[i] === '₹4000 - ₹4500')
+        filterHotels = [
+          ...filterHotels,
+          ...allHotels?.filter(
+            (hotel) =>
+              hotel.avgCostPerNight >= 4000 && hotel.avgCostPerNight <= 4500
+          ),
+        ];
+
+      if (filter[i] === '₹4500 - ₹5000')
+        filterHotels = [
+          ...filterHotels,
+          ...allHotels?.filter(
+            (hotel) =>
+              hotel.avgCostPerNight >= 4500 && hotel.avgCostPerNight <= 5000
+          ),
+        ];
+
+      if (filter[i] === '₹5000 - ₹5500')
+        filterHotels = [
+          ...filterHotels,
+          ...allHotels?.filter(
+            (hotel) =>
+              hotel.avgCostPerNight >= 5000 && hotel.avgCostPerNight <= 5500
+          ),
+        ];
+
+      if (filter[i] === '₹5500 - ₹6000')
+        filterHotels = [
+          ...filterHotels,
+          ...allHotels?.filter(
+            (hotel) =>
+              hotel.avgCostPerNight >= 5500 && hotel.avgCostPerNight <= 6000
+          ),
+        ];
+
+      if (filter[i] === '₹6000 - ₹6500')
+        filterHotels = [
+          ...filterHotels,
+          ...allHotels?.filter(
+            (hotel) =>
+              hotel.avgCostPerNight >= 6000 && hotel.avgCostPerNight <= 6500
+          ),
+        ];
+
+      if (filter[i] === '₹6500 - ₹7000')
+        filterHotels = [
+          ...filterHotels,
+          ...allHotels?.filter(
+            (hotel) =>
+              hotel.avgCostPerNight >= 6500 && hotel.avgCostPerNight <= 7000
+          ),
+        ];
+
+      if (filter[i] === '₹7000 - ₹7500')
+        filterHotels = [
+          ...filterHotels,
+          ...allHotels?.filter(
+            (hotel) =>
+              hotel.avgCostPerNight >= 7000 && hotel.avgCostPerNight <= 7500
+          ),
+        ];
+
+      if (filter[i] === '₹7500++')
+        filterHotels = [
+          ...filterHotels,
+          ...allHotels?.filter((hotel) => hotel.avgCostPerNight >= 7500),
+        ];
+    }
+    if (filter.length === 0) filterHotels = allHotels;
+    filterHotels = [...new Set(filterHotels)];
+    if (sort === 'popular')
+      filterHotels = filterHotels.sort((a, b) => a.name.localeCompare(b.name));
+    if (sort === 'highest rating')
+      filterHotels = filterHotels.sort((a, b) => b.rating - a.rating);
+    if (sort === 'highest price')
+      filterHotels = filterHotels.sort(
+        (a, b) => b.avgCostPerNight - a.avgCostPerNight
+      );
+    if (sort === 'lowest price')
+      filterHotels = filterHotels.sort(
+        (a, b) => a.avgCostPerNight - b.avgCostPerNight
+      );
+    setFilteredSortedHotels(filterHotels);
+  }, [filter, sort]);
+
+  useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    console.log(filter);
   }, [filter]);
 
   function handleSubSearch() {
     const searchParams = new URLSearchParams();
-    setFilteredSortedHotels('popular');
+    setSort('popular');
     searchParams.set('city', hotelCity);
     searchParams.set(
       'check-in-date',
@@ -114,7 +230,7 @@ function HotelsSubTerminal() {
             <p className="uppercase">City, Area or Property</p>
             <FaAngleDown />
           </div>
-          <p className="text-white">{hotelCity.split(',')[0]}</p>
+          <p className="text-white">{hotelCity?.split(',')[0]}</p>
           {isCityHotelPopupOpen && <HotelsSubCityPopup />}
         </div>
         <div
@@ -167,10 +283,10 @@ function HotelsSubTerminal() {
         </button>
       </div>
       <HotelsSort />
-      <div className="p-8 flex flex-col md:flex-row gap-2 md:justify-center">
-        <HotelsFilter />
+      <div className="p-8 flex flex-col md:flex-row gap-2 md:justify-center md:px-16">
+        <HotelsFilter hotelsList={hotelsInCity?.data.hotels} />
         {isLoading && <Spinner />}
-        {!isLoading && <HotelsInCity hotelsList={hotelsInCity?.data.hotels} />}
+        {!isLoading && <HotelsInCity hotelsList={filteredSortedHotels} />}
       </div>
     </div>
   );

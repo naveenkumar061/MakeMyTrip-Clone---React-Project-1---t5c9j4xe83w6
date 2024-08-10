@@ -25,6 +25,7 @@ import AppLayout from './layouts/AppLayout';
 import ComingSoon from './utils/ComingSoon';
 import ProtectedRoute from './features/auth/ProtectedRoute';
 import YetToCome from './utils/YetToCome';
+import HotelIndividual from './features/hotels/hotelsincity/HotelIndividual';
 
 function App() {
   const queryClient = new QueryClient({
@@ -54,6 +55,10 @@ function App() {
                         <Route
                           path="/hotels/search"
                           element={<HotelsSubTerminal />}
+                        />
+                        <Route
+                          path="/hotels/results/details"
+                          element={<HotelIndividual />}
                         />
                       </Route>
                       <Route element={<AppLayout />}>

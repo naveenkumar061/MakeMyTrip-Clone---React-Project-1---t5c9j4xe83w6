@@ -50,7 +50,7 @@ function HotelsSort() {
   }
 
   return (
-    <div className="sticky top-16 z-[2] mb-8 flex h-fit items-center flex-wrap justify-around border border-b border-cyan-400 bg-cyan-100 px-20">
+    <div className="sticky top-20 z-[2] mb-8 flex h-fit items-center flex-wrap justify-around border border-b border-cyan-400 bg-cyan-100 px-20">
       <h1 className="font-semibold uppercase">Sort By:</h1>
       <h1
         className={`${
