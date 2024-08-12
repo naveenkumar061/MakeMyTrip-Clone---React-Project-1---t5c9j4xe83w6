@@ -1,9 +1,39 @@
 import { useState } from 'react';
 import Modal from '../../../utils/Modal';
 import Login from '../../../pages/Login';
+import { useLoginContext } from '../../../context/login/LoginContext';
+import { useNavigate } from 'react-router-dom';
+import { useHotelsMainContext } from '../../../context/Resort/HotelsMainContext';
 
-function Room({ item, images, index }) {
+function Room({ item, images, index, id, name }) {
   const [openModal, setOpenModal] = useState(false);
+
+  console.log(item);
+
+  const { isAuthenticated } = useLoginContext();
+  const { dateCheckIn, dateCheckOut, noOfRooms, noOfAdults } =
+    useHotelsMainContext();
+
+  const navigate = useNavigate();
+
+  function handleNavigateBooking(val) {
+    if (isAuthenticated) {
+      const searchParams = new URLSearchParams();
+      searchParams.append('hotel_id', id);
+      searchParams.append('number', val);
+      searchParams.append('date', dateCheckIn);
+      searchParams.append('returndate', dateCheckOut);
+      searchParams.append('rooms', noOfRooms);
+      searchParams.append('adults', noOfAdults);
+      searchParams.append('name', name);
+      navigate({
+        pathname: '/hotels/results/details/hotelBooking',
+        search: `?${searchParams.toString()}`,
+      });
+    } else {
+      setOpenModal(true);
+    }
+  }
 
   return (
     <div className="rounded-md shadow-[5px_5px_18px_#d3d3d3] md:h-80 w-full flex items-center flex-col md:flex-row">
@@ -82,7 +112,7 @@ function Room({ item, images, index }) {
         </p>
         <button
           className="text-nowrap bg-gradient-to-r from-[#53b2fe] to-[#065af3] rounded-[50px] text-white text-base  w-[150px] cursor-pointer h-[38px] lg:absolute lg:bottom-5 lg:right-5"
-          onClick={() => {}}
+          onClick={() => handleNavigateBooking(item.roomNumber)}
         >
           SELECT ROOM
         </button>

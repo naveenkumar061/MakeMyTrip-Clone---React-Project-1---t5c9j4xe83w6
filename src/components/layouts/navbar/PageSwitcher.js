@@ -33,9 +33,9 @@ function PageSwitcher({ topRightNavItem }) {
   }
 
   function handleLogout() {
-    localStorage.removeItem('name');
-    localStorage.removeItem('authToken');
-    localStorage.removeItem('email');
+    sessionStorage.removeItem('name');
+    sessionStorage.removeItem('authToken');
+    sessionStorage.removeItem('email');
     setIsAuthenticated(false);
     navigate('/flights');
     setShowLogoutPopup(false);

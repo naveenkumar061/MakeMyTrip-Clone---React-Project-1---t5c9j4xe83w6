@@ -1,7 +1,7 @@
 import { Outlet } from 'react-router-dom';
 import NavScrollMainBar from './navbar/NavScrollMainBar';
 
-function SubLayout({ children }) {
+function SubLayout() {
   return (
     <div>
       <NavScrollMainBar />

@@ -10,7 +10,6 @@ import Trains from './pages/Trains';
 import Buses from './pages/Buses';
 import Trips from './pages/Trips';
 import Login from './pages/Login';
-import Booking from './pages/Booking';
 import PageNotFound from './pages/PageNotFound';
 import { ToggleProvider } from './context/togglebar/ToggleContext';
 import { OffersProvider } from './context/offers/OffersContext';
@@ -28,6 +27,9 @@ import HotelIndividual from './features/hotels/hotelsincity/HotelIndividual';
 import { TrainsMainProvider } from './context/Trains/TrainsMainContext';
 import TrainsSubTerminal from './features/trains/TrainsSubTerminal';
 import ComingSoon from './pages/ComingSoon';
+import TrainBook from './pages/TrainBook';
+import HotelBook from './pages/HotelBook';
+import FlightBook from './pages/FlightBook';
 
 function App() {
   const queryClient = new QueryClient({
@@ -60,12 +62,44 @@ function App() {
                             element={<HotelsSubTerminal />}
                           />
                           <Route
+                            path="/flights/results/flightBooking"
+                            element={
+                              <ProtectedRoute>
+                                <FlightBook />
+                              </ProtectedRoute>
+                            }
+                          />
+                          <Route
                             path="/hotels/results/details"
                             element={<HotelIndividual />}
                           />
                           <Route
+                            path="/hotels/results/details/hotelBooking"
+                            element={
+                              <ProtectedRoute>
+                                <HotelBook />
+                              </ProtectedRoute>
+                            }
+                          />
+                          <Route
                             path="/railways/search"
                             element={<TrainsSubTerminal />}
+                          />
+                          <Route
+                            path="/railways/results/booking"
+                            element={
+                              <ProtectedRoute>
+                                <TrainBook />
+                              </ProtectedRoute>
+                            }
+                          />
+                          <Route
+                            path="/trips"
+                            element={
+                              <ProtectedRoute>
+                                <Trips />
+                              </ProtectedRoute>
+                            }
                           />
                         </Route>
                         <Route element={<AppLayout />}>
@@ -86,22 +120,6 @@ function App() {
                           <Route path="/forex" element={<ComingSoon />} />
                           <Route path="/insurance" element={<ComingSoon />} />
                           <Route path="*" element={<PageNotFound />} />
-                          <Route
-                            path="/trips"
-                            element={
-                              <ProtectedRoute>
-                                <Trips />
-                              </ProtectedRoute>
-                            }
-                          />
-                          <Route
-                            path="/booking"
-                            element={
-                              <ProtectedRoute>
-                                <Booking />
-                              </ProtectedRoute>
-                            }
-                          />
                         </Route>
                         <Route path="/login" element={<Login />} />
                         <Route path="/yettocome" element={<YetToCome />} />

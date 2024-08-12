@@ -76,6 +76,7 @@ function HotelIndividual() {
   console.log(hotelDetails?.data);
 
   const {
+    _id,
     images,
     name,
     location,
@@ -333,7 +334,14 @@ function HotelIndividual() {
                 Rooms
               </p>
               {rooms.map((item, index) => (
-                <Room key={index} item={item} index={index} images={images} />
+                <Room
+                  key={index}
+                  item={item}
+                  index={index}
+                  images={images}
+                  id={_id}
+                  name={name}
+                />
               ))}
             </div>
           </div>

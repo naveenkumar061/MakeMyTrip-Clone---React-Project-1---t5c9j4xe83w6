@@ -24,9 +24,9 @@ function NavScrollMainBar() {
   }, [isAuthenticated]);
 
   function handleLogout() {
-    localStorage.removeItem('name');
-    localStorage.removeItem('authtoken');
-    localStorage.removeItem('email');
+    sessionStorage.removeItem('name');
+    sessionStorage.removeItem('authtoken');
+    sessionStorage.removeItem('email');
     setShowLogoutPopup(false);
     setIsAuthenticated(false);
   }

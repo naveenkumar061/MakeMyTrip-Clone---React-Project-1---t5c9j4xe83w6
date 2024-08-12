@@ -1,9 +1,12 @@
-import React, { useState } from "react";
-import { Link, useSearchParams } from "react-router-dom";
+import React, { useState } from 'react';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 
-import { useFlightsMainContext } from "../../../context/Flights/FlightsMainContext";
-import { useFlightInDetailed } from "../flightsapicall/useFlightInDetailed";
-import FligthsIndividualInformationViewDetails from "./FligthsIndividualInformationViewDetails";
+import { useFlightsMainContext } from '../../../context/Flights/FlightsMainContext';
+import { useFlightInDetailed } from '../flightsapicall/useFlightInDetailed';
+import FligthsIndividualInformationViewDetails from './FligthsIndividualInformationViewDetails';
+import { useLoginContext } from '../../../context/login/LoginContext';
+import Modal from '../../../utils/Modal';
+import Login from '../../../pages/Login';
 
 function FlightsindividualInformationList({ index, listLength, flight }) {
   const {
@@ -15,12 +18,13 @@ function FlightsindividualInformationList({ index, listLength, flight }) {
     imageName,
     imageSource,
     airportList,
+    date,
   } = useFlightsMainContext();
 
   const [searchParams] = useSearchParams();
 
-  const sourceIataCode = searchParams.get("source");
-  const destinationIataCode = searchParams.get("destination");
+  const sourceIataCode = searchParams.get('source');
+  const destinationIataCode = searchParams.get('destination');
 
   // Find the source city based on the source IATA code
   const { city: fromCity } =
@@ -29,12 +33,15 @@ function FlightsindividualInformationList({ index, listLength, flight }) {
   // Find the destination city based on the destination IATA code
   const { city: toCity } =
     airportList?.find(
-      (airport) => airport?.iata_code === destinationIataCode,
+      (airport) => airport?.iata_code === destinationIataCode
     ) || {};
 
   const { flightInDetailed } = useFlightInDetailed(flight._id);
 
+  const navigate = useNavigate();
+
   const [hideDetails, setHideDetails] = useState(false);
+  const { isAuthenticated } = useLoginContext();
 
   const airlineList = airlineInfo(flight);
   const duration = travelDuration(flight);
@@ -44,14 +51,30 @@ function FlightsindividualInformationList({ index, listLength, flight }) {
   const imgName = imageName(airlineList);
   const imgSrc = imageSource(imgName);
 
+  const [openModal, setOpenModal] = useState(false);
+
   function handleViewFlightDetails() {
     setHideDetails((details) => !details);
+  }
+
+  function handleNavigateBooking() {
+    if (isAuthenticated) {
+      const searchParams = new URLSearchParams();
+      searchParams.append('flight_id', flight._id);
+      searchParams.append('date', date);
+      navigate({
+        pathname: '/flights/results/flightBooking',
+        search: `?${searchParams.toString()}`,
+      });
+    } else {
+      setOpenModal(true);
+    }
   }
 
   return (
     <div
       className={`${
-        index === listLength - 1 ? "m-0" : "mb-4"
+        index === listLength - 1 ? 'm-0' : 'mb-4'
       } flex w-full flex-col gap-4 bg-white p-4 text-xs`}
     >
       <div className="flex w-full flex-wrap justify-between">
@@ -89,12 +112,12 @@ function FlightsindividualInformationList({ index, listLength, flight }) {
         {/* Booking Button */}
         <div className="flex flex-col gap-2">
           <p className="text-sm text-red-500">{seats}</p>
-          <Link
-            to="/booking"
-            className="text-md flex items-center justify-center rounded-[35px] bg-gradient-to-r from-[#53b2fe] to-[#065af3] p-2 font-bold uppercase text-white"
+          <div
+            onClick={handleNavigateBooking}
+            className="text-md flex items-center justify-center rounded-[35px] bg-gradient-to-r from-[#53b2fe] to-[#065af3] p-2 font-bold uppercase text-white cursor-pointer"
           >
             View Prices
-          </Link>
+          </div>
         </div>
       </div>
       {/* Toggle Flight Details */}
@@ -116,9 +139,13 @@ function FlightsindividualInformationList({ index, listLength, flight }) {
           </p>
           <FligthsIndividualInformationViewDetails
             flightInDetailed={flightInDetailed}
+            flightID={flight._id}
           />
         </>
       )}
+      <Modal open={openModal} close={() => setOpenModal(false)}>
+        <Login close={() => setOpenModal(false)} />
+      </Modal>
     </div>
   );
 }

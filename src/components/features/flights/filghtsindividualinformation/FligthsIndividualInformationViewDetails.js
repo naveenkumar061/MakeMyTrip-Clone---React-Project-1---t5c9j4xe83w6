@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useFlightsMainContext } from '../../../context/Flights/FlightsMainContext';
 import Modal from '../../../utils/Modal';
 import Login from '../../../pages/Login';
+import { useLoginContext } from '../../../context/login/LoginContext';
 
 // Component to display detailed information of an individual flight
-function FligthsIndividualInformationViewDetails({ flightInDetailed }) {
+function FligthsIndividualInformationViewDetails({
+  flightInDetailed,
+  flightID,
+}) {
   // Destructuring values from context
   const {
     fromCity,
@@ -23,9 +27,13 @@ function FligthsIndividualInformationViewDetails({ flightInDetailed }) {
     seatsAvailable,
     imageName,
     imageSource,
+    date,
   } = useFlightsMainContext();
 
+  const { isAuthenticated } = useLoginContext();
+
   const [openModal, setOpenModal] = useState(false);
+  const navigate = useNavigate();
 
   // Destructuring flight details from the passed prop
   const flightDetails = flightInDetailed.data;
@@ -39,7 +47,19 @@ function FligthsIndividualInformationViewDetails({ flightInDetailed }) {
   const imgName = imageName(airlineList);
   const imgSrc = imageSource(imgName);
 
-  function handleNavigateBooking() {}
+  function handleNavigateBooking() {
+    if (isAuthenticated) {
+      const searchParams = new URLSearchParams();
+      searchParams.append('flight_id', flightID);
+      searchParams.append('date', date);
+      navigate({
+        pathname: '/flights/results/flightBooking',
+        search: `?${searchParams.toString()}`,
+      });
+    } else {
+      setOpenModal(true);
+    }
+  }
 
   return (
     <div className="flex w-full flex-col flex-wrap justify-between rounded-md border border-gray-400 font-semibold">
