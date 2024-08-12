@@ -2,38 +2,29 @@ import { format } from 'date-fns';
 import { createContext, useContext, useRef, useState } from 'react';
 import toast from 'react-hot-toast';
 
-const TrainsMainContext = createContext();
+const BusesMainContext = createContext();
 
-function TrainsMainProvider({ children }) {
+function BusesMainProvider({ children }) {
   const [isFromPopupOpen, setIsFromPopupOpen] = useState(false);
   const [isToPopupOpen, setIsToPopupOpen] = useState(false);
   const [isTravelDatePopupOpen, setIsTravelDatePopupOpen] = useState(false);
-  const [from, setFrom] = useState('Delhi Junction');
-  const [to, setTo] = useState('Salem Junction');
-  const [search, setSearch] = useState('');
+  const [from, setFrom] = useState('Bangalore, Karnataka');
+  const [to, setTo] = useState('Jabalpur, Madhya Pradesh');
   const [date, setDate] = useState(new Date());
+  const [search, setSearch] = useState('');
   const [filter, setFilter] = useState([]);
-  const [sort, setSort] = useState('Availablity (Default)');
-  const [sortCard, setSortCard] = useState(false);
+  const [sort, setSort] = useState('Price (Lowest First)');
 
   const fromRef = useRef(null);
   const toRef = useRef(null);
   const dateRef = useRef(null);
   const inputRef = useRef(null);
-  const sortRef = useRef(null);
 
   const longYear = format(date, 'yyyy');
   const year = format(date, 'yy');
   const weekday = format(date, 'EEEEEEE');
   const month = format(date, 'MMM');
   const day = format(date, 'dd');
-
-  function handleFromClick(event) {
-    event.stopPropagation();
-    setIsFromPopupOpen(true);
-    setIsToPopupOpen(false);
-    setIsTravelDatePopupOpen(false);
-  }
 
   function handleClickOutside(event) {
     if (fromRef.current && !fromRef.current.contains(event.target))
@@ -42,27 +33,13 @@ function TrainsMainProvider({ children }) {
       setIsToPopupOpen(false);
     if (dateRef.current && !dateRef.current.contains(event.target))
       setIsTravelDatePopupOpen(false);
-    if (sortRef.current && !sortRef.current.contains(event.target))
-      setSortCard(false);
   }
 
-  function showToast(condition) {
-    if (condition) {
-      toast.error('From & To trains cannot be the same', {
-        style: { border: '1px solid black' },
-      });
-    }
-  }
-
-  function chooseJunction(junction, e, destination) {
-    e.stopPropagation();
-    if (destination === 'from') {
-      setFrom(junction);
-      setIsFromPopupOpen(false);
-    } else if (destination === 'to') {
-      setTo(junction);
-      setIsToPopupOpen(false);
-    }
+  function handleFromClick(event) {
+    event.stopPropagation();
+    setIsFromPopupOpen(true);
+    setIsToPopupOpen(false);
+    setIsTravelDatePopupOpen(false);
   }
 
   function handleToClick(event) {
@@ -79,6 +56,31 @@ function TrainsMainProvider({ children }) {
     setIsToPopupOpen(false);
   }
 
+  function handleMainArrowButtonClick() {
+    const temp = from;
+    setFrom(to);
+    setTo(temp);
+  }
+
+  function showToast(condition) {
+    if (condition) {
+      toast.error('From & To trains cannot be the same', {
+        style: { border: '1px solid black' },
+      });
+    }
+  }
+
+  function chooseCity(bus, e, destination) {
+    e.stopPropagation();
+    if (destination === 'from') {
+      setFrom(bus);
+      setIsFromPopupOpen(false);
+    } else if (destination === 'to') {
+      setTo(bus);
+      setIsToPopupOpen(false);
+    }
+  }
+
   function handleDateChange(newDate) {
     setDate(newDate);
     setIsTravelDatePopupOpen(false);
@@ -88,27 +90,10 @@ function TrainsMainProvider({ children }) {
     setIsTravelDatePopupOpen(false);
   }
 
-  function handleMainArrowButtonClick() {
-    const temp = from;
-    setFrom(to);
-    setTo(temp);
-  }
-
   function onAddFilter(filter, condition) {
     if (condition)
       setFilter((prev) => (prev.includes(filter) ? prev : [...prev, filter]));
     else setFilter((prev) => prev.filter((name) => name !== filter));
-  }
-
-  function trainSortPopup(event) {
-    event.stopPropagation();
-    setSortCard(!sortCard);
-  }
-
-  function handleSort(sortvalue, event) {
-    event.stopPropagation();
-    setSort(sortvalue);
-    setSortCard(false);
   }
 
   const content = {
@@ -121,19 +106,15 @@ function TrainsMainProvider({ children }) {
     setIsTravelDatePopupOpen,
     fromRef,
     handleClickOutside,
-    toRef,
-    from,
-    setFrom,
-    to,
-    setTo,
-    showToast,
-    inputRef,
-    search,
-    setSearch,
-    chooseJunction,
     handleToClick,
-    handleTravelDate,
+    toRef,
     dateRef,
+    handleTravelDate,
+    handleMainArrowButtonClick,
+    from,
+    to,
+    setFrom,
+    setTo,
     date,
     setDate,
     longYear,
@@ -141,33 +122,32 @@ function TrainsMainProvider({ children }) {
     weekday,
     month,
     day,
+    showToast,
+    inputRef,
+    search,
+    setSearch,
+    chooseCity,
     handleDateChange,
     handleDateClose,
-    handleMainArrowButtonClick,
     filter,
     setFilter,
     onAddFilter,
     sort,
     setSort,
-    trainSortPopup,
-    sortCard,
-    setSortCard,
-    handleSort,
-    sortRef,
   };
 
   return (
-    <TrainsMainContext.Provider value={content}>
+    <BusesMainContext.Provider value={content}>
       {children}
-    </TrainsMainContext.Provider>
+    </BusesMainContext.Provider>
   );
 }
 
-function useTrainsMainContext() {
-  const context = useContext(TrainsMainContext);
+function useBusesMainContext() {
+  const context = useContext(BusesMainContext);
   if (context === undefined)
-    throw new Error('TrainsMainContext was used outside of TrainsMainProvider');
+    throw new Error('BusesMainContext was used outside of BusesMainProvider');
   return context;
 }
 
-export { TrainsMainProvider, useTrainsMainContext };
+export { BusesMainProvider, useBusesMainContext };

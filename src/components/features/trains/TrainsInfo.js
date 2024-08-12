@@ -18,12 +18,7 @@ function TrainsInfo({ trainsList }) {
   return (
     <div className="relative w-[90%] h-fit z-[1] md:w-[65vw] gap-16 flex flex-col">
       {trainsList?.map((train, index) => (
-        <TrainsUnique
-          key={index}
-          index={index}
-          listLength={trainsListLength}
-          train={train}
-        />
+        <TrainsUnique key={index} train={train} />
       ))}
     </div>
   );

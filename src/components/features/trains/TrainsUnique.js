@@ -4,7 +4,7 @@ import Login from '../../pages/Login';
 import { useNavigate } from 'react-router-dom';
 import { useLoginContext } from '../../context/login/LoginContext';
 
-function TrainsUnique({ index, listLength, train }) {
+function TrainsUnique({ train }) {
   const {
     trainName,
     trainType,
@@ -58,7 +58,7 @@ function TrainsUnique({ index, listLength, train }) {
           <div className="flex gap-2 mt-2 items-center justify-center">
             <p className="text-[hsla(0,0%,50%,.677)] text-sm">#{trainNumber}</p>
             <p>|</p>
-            <p className="text-sm flex gap-1 items-center justify-center">
+            <div className="text-sm flex gap-1 items-center justify-center">
               Departs on :
               <div className="flex gap-1">
                 {weekDay.map((day, index) => (
@@ -74,7 +74,7 @@ function TrainsUnique({ index, listLength, train }) {
                   </div>
                 ))}
               </div>
-            </p>
+            </div>
           </div>
         </div>
         <div className="flex gap-14 mr-28">

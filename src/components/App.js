@@ -30,6 +30,9 @@ import ComingSoon from './pages/ComingSoon';
 import TrainBook from './pages/TrainBook';
 import HotelBook from './pages/HotelBook';
 import FlightBook from './pages/FlightBook';
+import BusesSubTerminal from './features/buses/BusesSubTerminal';
+import BusBook from './pages/BusBook';
+import { BusesMainProvider } from './context/Buses/BusesMainContext';
 
 function App() {
   const queryClient = new QueryClient({
@@ -49,98 +52,112 @@ function App() {
               <HotelsIndividualProvider>
                 <HotelsMainProvider>
                   <TrainsMainProvider>
-                    <BrowserRouter>
-                      <ReactQueryDevtools initialIsOpen={false} />
-                      <Routes>
-                        <Route element={<SubLayout />}>
-                          <Route
-                            path="/flights/search"
-                            element={<FlightsSubTerminal />}
-                          />
-                          <Route
-                            path="/hotels/search"
-                            element={<HotelsSubTerminal />}
-                          />
-                          <Route
-                            path="/flights/results/flightBooking"
-                            element={
-                              <ProtectedRoute>
-                                <FlightBook />
-                              </ProtectedRoute>
-                            }
-                          />
-                          <Route
-                            path="/hotels/results/details"
-                            element={<HotelIndividual />}
-                          />
-                          <Route
-                            path="/hotels/results/details/hotelBooking"
-                            element={
-                              <ProtectedRoute>
-                                <HotelBook />
-                              </ProtectedRoute>
-                            }
-                          />
-                          <Route
-                            path="/railways/search"
-                            element={<TrainsSubTerminal />}
-                          />
-                          <Route
-                            path="/railways/results/booking"
-                            element={
-                              <ProtectedRoute>
-                                <TrainBook />
-                              </ProtectedRoute>
-                            }
-                          />
-                          <Route
-                            path="/trips"
-                            element={
-                              <ProtectedRoute>
-                                <Trips />
-                              </ProtectedRoute>
-                            }
-                          />
-                        </Route>
-                        <Route element={<AppLayout />}>
-                          <Route
-                            path="/"
-                            element={<Navigate to="/flights" replace />}
-                          />
-                          <Route path="/flights" element={<Flights />} />
-                          <Route path="/hotels" element={<Hotels />} />
-                          <Route path="/railways" element={<Trains />} />
-                          <Route path="/bus-tickets" element={<Buses />} />
-                          <Route path="/homestays" element={<ComingSoon />} />
-                          <Route
-                            path="/holidays-india"
-                            element={<ComingSoon />}
-                          />
-                          <Route path="/cabs" element={<ComingSoon />} />
-                          <Route path="/forex" element={<ComingSoon />} />
-                          <Route path="/insurance" element={<ComingSoon />} />
-                          <Route path="*" element={<PageNotFound />} />
-                        </Route>
-                        <Route path="/login" element={<Login />} />
-                        <Route path="/yettocome" element={<YetToCome />} />
-                      </Routes>
-                    </BrowserRouter>
-                    <Toaster
-                      position="top-center"
-                      gutter={12}
-                      containerStyle={{ margin: '8px' }}
-                      toastOptions={{
-                        success: { duration: 3000 },
-                        error: { duration: 5000 },
-                        style: {
-                          fontSize: 'text-base',
-                          maxWidth: '500px',
-                          padding: '16px 24px',
-                          backgroundColor: 'rgb(249 250 251)',
-                          color: 'rgb(55 65 81)',
-                        },
-                      }}
-                    />
+                    <BusesMainProvider>
+                      <BrowserRouter>
+                        <ReactQueryDevtools initialIsOpen={false} />
+                        <Routes>
+                          <Route element={<SubLayout />}>
+                            <Route
+                              path="/flights/search"
+                              element={<FlightsSubTerminal />}
+                            />
+                            <Route
+                              path="/hotels/search"
+                              element={<HotelsSubTerminal />}
+                            />
+                            <Route
+                              path="/flights/results/flightBooking"
+                              element={
+                                <ProtectedRoute>
+                                  <FlightBook />
+                                </ProtectedRoute>
+                              }
+                            />
+                            <Route
+                              path="/hotels/results/details"
+                              element={<HotelIndividual />}
+                            />
+                            <Route
+                              path="/hotels/results/details/hotelBooking"
+                              element={
+                                <ProtectedRoute>
+                                  <HotelBook />
+                                </ProtectedRoute>
+                              }
+                            />
+                            <Route
+                              path="/railways/search"
+                              element={<TrainsSubTerminal />}
+                            />
+                            <Route
+                              path="/railways/results/booking"
+                              element={
+                                <ProtectedRoute>
+                                  <TrainBook />
+                                </ProtectedRoute>
+                              }
+                            />
+                            <Route
+                              path="/bus-tickets/search"
+                              element={<BusesSubTerminal />}
+                            />
+                            <Route
+                              path="/bus-tickets/results/booking"
+                              element={
+                                <ProtectedRoute>
+                                  <BusBook />
+                                </ProtectedRoute>
+                              }
+                            />
+                            <Route
+                              path="/trips"
+                              element={
+                                <ProtectedRoute>
+                                  <Trips />
+                                </ProtectedRoute>
+                              }
+                            />
+                          </Route>
+                          <Route element={<AppLayout />}>
+                            <Route
+                              path="/"
+                              element={<Navigate to="/flights" replace />}
+                            />
+                            <Route path="/flights" element={<Flights />} />
+                            <Route path="/hotels" element={<Hotels />} />
+                            <Route path="/railways" element={<Trains />} />
+                            <Route path="/bus-tickets" element={<Buses />} />
+                            <Route path="/homestays" element={<ComingSoon />} />
+                            <Route
+                              path="/holidays-india"
+                              element={<ComingSoon />}
+                            />
+                            <Route path="/cabs" element={<ComingSoon />} />
+                            <Route path="/forex" element={<ComingSoon />} />
+                            <Route path="/insurance" element={<ComingSoon />} />
+                            <Route path="*" element={<PageNotFound />} />
+                          </Route>
+                          <Route path="/login" element={<Login />} />
+                          <Route path="/yettocome" element={<YetToCome />} />
+                        </Routes>
+                      </BrowserRouter>
+                      <Toaster
+                        position="top-center"
+                        gutter={12}
+                        containerStyle={{ margin: '8px' }}
+                        toastOptions={{
+                          success: { duration: 3000 },
+                          error: { duration: 5000 },
+                          style: {
+                            fontSize: 'text-base',
+                            maxWidth: '500px',
+                            padding: '16px 24px',
+                            backgroundColor: 'rgb(249 250 251)',
+                            color: 'rgb(55 65 81)',
+                          },
+                        }}
+                      />
+                    </BusesMainProvider>
                   </TrainsMainProvider>
                 </HotelsMainProvider>
               </HotelsIndividualProvider>
