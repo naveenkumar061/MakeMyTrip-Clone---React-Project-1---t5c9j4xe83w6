@@ -25,7 +25,7 @@ function AppLayout() {
     function handleScroll() {
       const height = window.scrollY;
       const width = window.innerWidth;
-      if (height >= 150 || (width <= 1200 && height >= 0)) {
+      if (width <= 1200 && height >= 0) {
         setShowNavScrollMainBar(true);
       } else {
         setShowNavScrollMainBar(false);
@@ -47,7 +47,7 @@ function AppLayout() {
   return (
     <div>
       <div
-        className="min-h-screen h-[1250px] bg-cover bg-no-repeat text-white"
+        className="min-h-screen h-fit bg-cover bg-no-repeat text-white"
         style={{ backgroundImage: `url(${backgroundImage})` }}
       >
         {showNavFixedMainBar && <NavFixedMainBar />}

@@ -8,7 +8,7 @@ function FlightsClassPopup() {
   const { handleClassClose } = useFlightsMainContext(); // Destructuring handleClassClose from the context
 
   return (
-    <div className="absolute z-10 flex h-auto w-full left-0 sm:left-[70%] sm:w-[30%] flex-col gap-4 rounded-xl border border-gray-400 bg-white p-4 text-black">
+    <div className="absolute z-10 flex h-auto w-full left-0 md:left-[70%] md:w-[30%] flex-col gap-4 rounded-xl border border-gray-400 bg-white p-4 text-black">
       {/* Container for the popup, styled with Tailwind CSS */}
       <div className="flex items-center justify-between">
         {/* Travellers section with a heading and the FlightsClassTravellers component */}

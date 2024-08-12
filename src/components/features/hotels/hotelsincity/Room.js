@@ -1,4 +1,10 @@
+import { useState } from 'react';
+import Modal from '../../../utils/Modal';
+import Login from '../../../pages/Login';
+
 function Room({ item, images, index }) {
+  const [openModal, setOpenModal] = useState(false);
+
   return (
     <div className="rounded-md shadow-[5px_5px_18px_#d3d3d3] md:h-80 w-full flex items-center flex-col md:flex-row">
       <div className="h-full md:w-1/3">
@@ -76,13 +82,14 @@ function Room({ item, images, index }) {
         </p>
         <button
           className="text-nowrap bg-gradient-to-r from-[#53b2fe] to-[#065af3] rounded-[50px] text-white text-base  w-[150px] cursor-pointer h-[38px] lg:absolute lg:bottom-5 lg:right-5"
-          onClick={() => {
-            // navigatetoform(item.roomNumber);
-          }}
+          onClick={() => {}}
         >
           SELECT ROOM
         </button>
       </div>
+      <Modal open={openModal} close={() => setOpenModal(false)}>
+        <Login close={() => setOpenModal(false)} />
+      </Modal>
     </div>
   );
 }

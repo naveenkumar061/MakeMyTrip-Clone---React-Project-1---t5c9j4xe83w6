@@ -21,7 +21,6 @@ function NavScrollMainBar() {
 
   useEffect(() => {
     if (isAuthenticated) setName(sessionStorage.getItem('name'));
-    console.log(isAuthenticated);
   }, [isAuthenticated]);
 
   function handleLogout() {

@@ -1,6 +1,8 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { useFlightsMainContext } from "../../../context/Flights/FlightsMainContext";
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { useFlightsMainContext } from '../../../context/Flights/FlightsMainContext';
+import Modal from '../../../utils/Modal';
+import Login from '../../../pages/Login';
 
 // Component to display detailed information of an individual flight
 function FligthsIndividualInformationViewDetails({ flightInDetailed }) {
@@ -23,6 +25,8 @@ function FligthsIndividualInformationViewDetails({ flightInDetailed }) {
     imageSource,
   } = useFlightsMainContext();
 
+  const [openModal, setOpenModal] = useState(false);
+
   // Destructuring flight details from the passed prop
   const flightDetails = flightInDetailed.data;
 
@@ -35,7 +39,7 @@ function FligthsIndividualInformationViewDetails({ flightInDetailed }) {
   const imgName = imageName(airlineList);
   const imgSrc = imageSource(imgName);
 
-  console.log(flightDetails);
+  function handleNavigateBooking() {}
 
   return (
     <div className="flex w-full flex-col flex-wrap justify-between rounded-md border border-gray-400 font-semibold">
@@ -111,16 +115,19 @@ function FligthsIndividualInformationViewDetails({ flightInDetailed }) {
 
       {/* Booking Link */}
       <div className="flex justify-end">
-        <Link
-          to="/booking"
+        <button
           className="text-md relative right-2 top-2 flex items-center justify-center rounded-[35px] bg-gradient-to-r from-[#53b2fe] to-[#065af3] p-2 font-bold uppercase text-white"
+          onClick={handleNavigateBooking}
         >
           Book Now
-        </Link>
+        </button>
       </div>
 
       {/* Flight Amenities */}
       <div className="p-2 text-center text-base">{flightDetails.amenities}</div>
+      <Modal open={openModal} close={() => setOpenModal(false)}>
+        <Login close={() => setOpenModal(false)} />
+      </Modal>
     </div>
   );
 }

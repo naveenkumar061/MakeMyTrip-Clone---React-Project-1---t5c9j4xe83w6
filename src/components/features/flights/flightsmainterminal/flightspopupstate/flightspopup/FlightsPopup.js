@@ -26,6 +26,10 @@ function FlightsPopup({ destination }) {
     if (inputRef.current) inputRef.current.focus();
   }, []);
 
+  useEffect(() => {
+    setSearch('');
+  }, [setSearch]);
+
   // Effect to fetch flights list based on cityName when search changes
   useEffect(() => {
     if (search) setCityName(search);
@@ -34,8 +38,6 @@ function FlightsPopup({ destination }) {
   }, [search, setCityName, cityName]);
 
   return (
-    // ${
-    // destination === 'from' ? 'left-0' : 'right-[32.45%]'}
     <div
       className={`${
         destination === 'from' ? 'left-0' : 'sm:left-[28.25%]'

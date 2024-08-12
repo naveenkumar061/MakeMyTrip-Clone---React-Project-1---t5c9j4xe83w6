@@ -90,7 +90,7 @@ function FlightsMainProvider({ children }) {
     setIsFlightsClassPopupOpen(false);
   }
 
-  function handleMainArrowButtonClick(page) {
+  function handleMainArrowButtonClick() {
     const tempIndex = fromIndex;
     setFromIndex(toIndex);
     setToIndex(tempIndex);
