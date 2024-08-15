@@ -1,7 +1,6 @@
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useBusesMainContext } from '../../context/Buses/BusesMainContext';
 import { useEffect, useState } from 'react';
-import { useBusesSortByPrice } from './useBusesSortByPrice';
 import toast from 'react-hot-toast';
 import BusSubPopup from './BusSubPopup';
 import { PiArrowsLeftRightLight } from 'react-icons/pi';
@@ -10,6 +9,7 @@ import BusesFilter from './BusesFilter';
 import BusesSort from './BusesSort';
 import SpinnerMini from '../../utils/SpinnerMini';
 import BusesInfo from './BusesInfo';
+import { useBusesSortByName } from './useBusesSortByName';
 
 const commonClass =
   'relative h-14 flex-col gap-2 w-[20%] rounded-md bg-[#ffffff1a] px-4 font-semibold uppercase text-left cursor-pointer items-center justify-center';
@@ -44,7 +44,7 @@ function BusesSubTerminal() {
 
   const navigate = useNavigate();
 
-  const [filteredSortedBuses, setFilterdSortedBuses] = useState();
+  const [filteredSortedBuses, setFilteredSortedBuses] = useState();
 
   const [searchParams] = useSearchParams();
 
@@ -53,13 +53,13 @@ function BusesSubTerminal() {
   const selectedDayInfo = searchParams.get('day');
   const selectedDateInfo = searchParams.get('date');
 
-  const { busesSortByPrice, isLoading } = useBusesSortByPrice(
+  const { busesSortByName, isLoading } = useBusesSortByName(
     sourceInfo.split(',')[0],
     destinationInfo.split(',')[0],
     selectedDayInfo.slice(0, 3)
   );
 
-  const allBuses = busesSortByPrice?.data?.buses;
+  const allBuses = busesSortByName?.data?.buses;
 
   useEffect(() => {
     let condition = from === to;
@@ -80,21 +80,172 @@ function BusesSubTerminal() {
   }, [sourceInfo, destinationInfo, selectedDateInfo]);
 
   useEffect(() => {
-    setFilterdSortedBuses(busesSortByPrice?.data?.trains);
-  }, [busesSortByPrice]);
+    setFilteredSortedBuses(busesSortByName?.data?.buses);
+  }, [busesSortByName]);
+
+  function timeToDecimal(timeString) {
+    const [hours, minutes] = timeString.split(':').map(Number);
+    return hours + minutes / 60;
+  }
 
   useEffect(() => {
     let filterBuses = '';
 
-    console.log(filter);
+    for (let i = 0; i < filter.length; i++) {
+      if (filter[i] === 'AC')
+        filterBuses = [
+          ...filterBuses,
+          ...allBuses?.filter((bus) => bus.type === 'AC'),
+        ];
 
-    for (let i = 0; i < filter.length; i++) {}
+      if (filter[i] === 'Non AC')
+        filterBuses = [
+          ...filterBuses,
+          ...allBuses?.filter((bus) => bus.type === 'Non-AC'),
+        ];
+
+      if (filter[i] === 'Pick Up 6 11') {
+        const min = filter[i].split(' ')[2];
+        const max = filter[i].split(' ')[3];
+        filterBuses = [
+          ...filterBuses,
+          ...allBuses?.filter(
+            (bus) =>
+              timeToDecimal(bus.arrivalTime) >= min &&
+              timeToDecimal(bus.arrivalTime) <= max
+          ),
+        ];
+      }
+
+      if (filter[i] === 'Pick Up 11 18') {
+        const min = filter[i].split(' ')[2];
+        const max = filter[i].split(' ')[3];
+        filterBuses = [
+          ...filterBuses,
+          ...allBuses?.filter(
+            (bus) =>
+              timeToDecimal(bus.arrivalTime) >= min &&
+              timeToDecimal(bus.arrivalTime) <= max
+          ),
+        ];
+      }
+
+      if (filter[i] === 'Pick Up 18 23') {
+        const min = filter[i].split(' ')[2];
+        const max = filter[i].split(' ')[3];
+        filterBuses = [
+          ...filterBuses,
+          ...allBuses?.filter(
+            (bus) =>
+              timeToDecimal(bus.arrivalTime) >= min &&
+              timeToDecimal(bus.arrivalTime) <= max
+          ),
+        ];
+      }
+
+      if (filter[i] === 'Pick Up 23 6') {
+        const min = filter[i].split(' ')[2];
+        const max = filter[i].split(' ')[3];
+        filterBuses = [
+          ...filterBuses,
+          ...allBuses?.filter(
+            (bus) =>
+              timeToDecimal(bus.arrivalTime) >= min &&
+              timeToDecimal(bus.arrivalTime) <= 24
+          ),
+        ];
+        filterBuses = [
+          ...filterBuses,
+          ...allBuses?.filter(
+            (bus) =>
+              timeToDecimal(bus.arrivalTime) >= 0 &&
+              timeToDecimal(bus.arrivalTime) <= max
+          ),
+        ];
+      }
+
+      if (filter[i] === 'Drop 6 11') {
+        const min = filter[i].split(' ')[1];
+        const max = filter[i].split(' ')[2];
+        filterBuses = [
+          ...filterBuses,
+          ...allBuses?.filter(
+            (bus) =>
+              timeToDecimal(bus.departureTime) >= min &&
+              timeToDecimal(bus.departureTime) <= max
+          ),
+        ];
+      }
+
+      if (filter[i] === 'Drop 11 18') {
+        const min = filter[i].split(' ')[1];
+        const max = filter[i].split(' ')[2];
+        filterBuses = [
+          ...filterBuses,
+          ...allBuses?.filter(
+            (bus) =>
+              timeToDecimal(bus.departureTime) >= min &&
+              timeToDecimal(bus.departureTime) <= max
+          ),
+        ];
+      }
+
+      if (filter[i] === 'Drop 18 23') {
+        const min = filter[i].split(' ')[1];
+        const max = filter[i].split(' ')[2];
+        filterBuses = [
+          ...filterBuses,
+          ...allBuses?.filter(
+            (bus) =>
+              timeToDecimal(bus.departureTime) >= min &&
+              timeToDecimal(bus.departureTime) <= max
+          ),
+        ];
+      }
+
+      if (filter[i] === 'Drop 23 6') {
+        const min = filter[i].split(' ')[1];
+        const max = filter[i].split(' ')[2];
+        filterBuses = [
+          ...filterBuses,
+          ...allBuses?.filter(
+            (bus) =>
+              timeToDecimal(bus.departureTime) >= min &&
+              timeToDecimal(bus.departureTime) <= 24
+          ),
+        ];
+        filterBuses = [
+          ...filterBuses,
+          ...allBuses?.filter(
+            (bus) =>
+              timeToDecimal(bus.departureTime) >= 0 &&
+              timeToDecimal(bus.departureTime) <= max
+          ),
+        ];
+      }
+    }
 
     if (filter.length === 0) filterBuses = allBuses;
 
     filterBuses = [...new Set(filterBuses)];
 
-    setFilterdSortedBuses(filterBuses);
+    if (sort === 'Name')
+      filterBuses = filterBuses.sort((a, b) => a.name?.localeCompare(b.name));
+
+    if (sort === 'Cheap')
+      filterBuses = filterBuses.sort((a, b) => a.fare - b.fare);
+
+    if (sort === 'Arrival')
+      filterBuses = filterBuses.sort((a, b) =>
+        a.arrivalTime?.localeCompare(b.arrivalTime)
+      );
+
+    if (sort === 'Departure')
+      filterBuses = filterBuses.sort((a, b) =>
+        a.departureTime?.localeCompare(b.departureTime)
+      );
+
+    setFilteredSortedBuses(filterBuses);
   }, [filter, sort]);
 
   useEffect(() => {
@@ -163,15 +314,21 @@ function BusesSubTerminal() {
           Search
         </button>
       </div>
-      <div className="flex items-center gap-2">
-        <BusesFilter />
-        <div className="flex flex-col">
-          <div className="flex">
-            <h2>{filteredSortedBuses?.length} buses found</h2>
-            <BusesSort />
+      <div className="flex flex-col pt-8 gap-2 md:flex-row w-full bg-[rgb(245,245,245)]">
+        <BusesFilter from={from} to={to} />
+        <div className="w-full md:w-[70vw] flex flex-col gap-2">
+          <div>
+            <div className="border border-[#e7e7e7] rounded-2xl bg-white py-2 px-5 flex items-center justify-between">
+              <p className="text-sm font-semibold">
+                {filteredSortedBuses?.length} buses found
+              </p>
+              <BusesSort />
+            </div>
           </div>
           {isLoading && <SpinnerMini />}
-          {!isLoading && <BusesInfo />}
+          {!isLoading && (
+            <BusesInfo filteredSortedBuses={filteredSortedBuses} />
+          )}
         </div>
       </div>
     </div>

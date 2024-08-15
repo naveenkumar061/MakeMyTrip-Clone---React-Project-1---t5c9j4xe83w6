@@ -1,15 +1,15 @@
 import { projectID, url } from './urls';
 
-export async function getBusesSortByPrice(source, destination, day) {
+export async function getBusesSortByName(source, destination, day) {
   const travelInfo = {
     source,
     destination,
   };
-  const price = { ticketPrice: 1 };
+  const name = { name: 1 };
   const response = await fetch(
     `${url}/bus?search=${JSON.stringify(
       travelInfo
-    )}&day=${day}&sort=${JSON.stringify(price)}`,
+    )}&day=${day}&sort=${JSON.stringify(name)}`,
     {
       headers: {
         projectID: projectID,

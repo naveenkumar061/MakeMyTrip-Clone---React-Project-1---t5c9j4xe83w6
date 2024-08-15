@@ -13,7 +13,7 @@ function BusesMainProvider({ children }) {
   const [date, setDate] = useState(new Date());
   const [search, setSearch] = useState('');
   const [filter, setFilter] = useState([]);
-  const [sort, setSort] = useState('Price (Lowest First)');
+  const [sort, setSort] = useState('Name');
 
   const fromRef = useRef(null);
   const toRef = useRef(null);
