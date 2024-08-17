@@ -33,6 +33,7 @@ import FlightBook from './pages/FlightBook';
 import BusesSubTerminal from './features/buses/BusesSubTerminal';
 import BusBook from './pages/BusBook';
 import { BusesMainProvider } from './context/Buses/BusesMainContext';
+import PaymentConfirmation from './pages/PaymentConfirmation';
 
 function App() {
   const queryClient = new QueryClient({
@@ -118,6 +119,14 @@ function App() {
                               }
                             />
                           </Route>
+                          <Route
+                            path="/payment"
+                            element={
+                              <ProtectedRoute>
+                                <PaymentConfirmation />
+                              </ProtectedRoute>
+                            }
+                          />
                           <Route element={<AppLayout />}>
                             <Route
                               path="/"

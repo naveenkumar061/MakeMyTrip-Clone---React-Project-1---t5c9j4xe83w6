@@ -52,6 +52,12 @@ function FligthsIndividualInformationViewDetails({
       const searchParams = new URLSearchParams();
       searchParams.append('flight_id', flightID);
       searchParams.append('date', date);
+      searchParams.append('fromCity', fromCity);
+      searchParams.append('toCity', toCity);
+      searchParams.append('duration', duration);
+      searchParams.append('airlineListName', airlineList.name);
+      searchParams.append('imgSrc', imgSrc);
+      searchParams.append('imgName', imgName);
       navigate({
         pathname: '/flights/results/flightBooking',
         search: `?${searchParams.toString()}`,

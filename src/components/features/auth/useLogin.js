@@ -15,7 +15,7 @@ export function useLogin(close) {
       setIsAuthenticated(true);
       setTimeout(() => {
         close();
-      }, 5000);
+      }, 1000);
     },
     onError: (err) => {
       if (err.message === 'Unauthorized: Invalid email or password') {

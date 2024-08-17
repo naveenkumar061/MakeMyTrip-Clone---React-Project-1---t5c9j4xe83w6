@@ -62,6 +62,12 @@ function FlightsindividualInformationList({ index, listLength, flight }) {
       const searchParams = new URLSearchParams();
       searchParams.append('flight_id', flight._id);
       searchParams.append('date', date);
+      searchParams.append('fromCity', fromCity);
+      searchParams.append('toCity', toCity);
+      searchParams.append('duration', duration);
+      searchParams.append('airlineListName', airlineList.name);
+      searchParams.append('imgSrc', imgSrc);
+      searchParams.append('imgName', imgName);
       navigate({
         pathname: '/flights/results/flightBooking',
         search: `?${searchParams.toString()}`,
