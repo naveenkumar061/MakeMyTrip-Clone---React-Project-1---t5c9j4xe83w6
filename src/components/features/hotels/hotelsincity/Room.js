@@ -26,6 +26,9 @@ function Room({ item, images, index, id, name }) {
       searchParams.append('rooms', noOfRooms);
       searchParams.append('adults', noOfAdults);
       searchParams.append('name', name);
+      searchParams.append('price', item.price);
+      searchParams.append('imgSrc', images[index % images.length]);
+      searchParams.append('roomType', item.roomType);
       navigate({
         pathname: '/hotels/results/details/hotelBooking',
         search: `?${searchParams.toString()}`,

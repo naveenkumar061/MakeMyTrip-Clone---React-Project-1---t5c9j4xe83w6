@@ -3,7 +3,6 @@ import { useFlightInDetailed } from '../features/flights/flightsapicall/useFligh
 import { format } from 'date-fns';
 import Spinner from '../utils/Spinner';
 import { useLoginContext } from '../context/login/LoginContext';
-import { Modal } from '@mui/material';
 import { useEffect, useState } from 'react';
 import Login from './Login';
 import toast from 'react-hot-toast';
@@ -12,6 +11,7 @@ import { useFlightsMainContext } from '../context/Flights/FlightsMainContext';
 import { AiOutlineMinusCircle } from 'react-icons/ai';
 import { useForm } from 'react-hook-form';
 import { useFlightBook } from './useFlightBook';
+import Modal from '../utils/Modal';
 
 function FlightBook() {
   const [openModal, setOpenModal] = useState(false);
@@ -72,11 +72,7 @@ function FlightBook() {
   }
 
   function onSubmit(data) {
-    console.log(data);
-
     const durationParts = duration.split(' ');
-
-    console.log(Number(durationParts[0]));
 
     const totalHours = Number(durationParts[0]);
 

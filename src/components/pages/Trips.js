@@ -24,11 +24,11 @@ function Trips() {
   const bookingArray = booking?.data;
 
   const bookUpcomeList = bookingArray?.filter(
-    (item) => item.start_date > new Date().toISOString()
+    (item) => item.end_date > new Date().toISOString()
   );
 
   const bookCompletedList = bookingArray?.filter(
-    (item) => item.start_date <= new Date().toISOString()
+    (item) => item.end_date <= new Date().toISOString()
   );
 
   useEffect(() => {
