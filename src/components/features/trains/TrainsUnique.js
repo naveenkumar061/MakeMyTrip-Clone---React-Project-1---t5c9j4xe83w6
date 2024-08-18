@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { useLoginContext } from '../../context/login/LoginContext';
 
 function TrainsUnique({ train }) {
+  console.log(train);
   const {
     trainName,
     trainType,
@@ -17,6 +18,7 @@ function TrainsUnique({ train }) {
     trainNumber,
     daysOfOperation,
     fare,
+    _id,
   } = train;
 
   const weekDay = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
@@ -30,6 +32,7 @@ function TrainsUnique({ train }) {
   function handleNavigateBooking(val1, val2) {
     if (isAuthenticated) {
       const searchParams = new URLSearchParams();
+      searchParams.append('trainId', _id);
       searchParams.append('trainName', trainName);
       searchParams.append('trainNumber', trainNumber);
       searchParams.append('travelDuration', travelDuration);

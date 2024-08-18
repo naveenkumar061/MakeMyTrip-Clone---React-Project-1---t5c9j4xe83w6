@@ -306,7 +306,7 @@ function HotelBook() {
                     <div className="border-b border-black">
                       <div className="border-b border-[#dfdfdf] py-3">
                         <div
-                          className={`flex flex-row justify-between items-cente ${
+                          className={`flex flex-row justify-between items-center ${
                             priceBreak ? 'flex-col gap-1' : 'flex-row'
                           }`}
                         >
@@ -348,7 +348,7 @@ function HotelBook() {
                       </div>
                       <div className="border-b border-[#dfdfdf] py-3">
                         <div
-                          className={`flex flex-row justify-between items-cente ${
+                          className={`flex flex-row justify-between items-center ${
                             taxBreak ? 'flex-col gap-1' : 'flex-row'
                           }`}
                         >

@@ -25,7 +25,6 @@ function PaymentConfirmation() {
   } = useForm({ mode: 'onChange' });
 
   function onSubmit(data) {
-    console.log(data);
     setOpenModal(true);
   }
 

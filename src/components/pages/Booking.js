@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-function Booking() {
+function Booking({ close }) {
   return (
     <div className="z-50 fixed top-0 left-0 min-w-full min-h-full bg-black/75 flex flex-row justify-center items-center">
       <div class="bg-[#FFFFF0] flex flex-col items-center justify-center shadow-md rounded-2xl p-5">
