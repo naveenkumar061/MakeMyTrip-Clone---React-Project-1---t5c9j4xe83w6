@@ -7,7 +7,7 @@ import NavScrollMainBarLeft from './NavScrollMainBarLeft';
 import Modal from '../../utils/Modal';
 import Login from '../../pages/Login';
 import { useLoginContext } from '../../context/login/LoginContext';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { CiLogout } from 'react-icons/ci';
 import { SlHandbag } from 'react-icons/sl';
 
@@ -22,6 +22,8 @@ function NavScrollMainBar() {
   const { toggle, handleToggle } = useToggle();
   const [openModal, setOpenModal] = useState(false);
 
+  const navigate = useNavigate();
+
   useEffect(() => {
     if (isAuthenticated) setName(sessionStorage.getItem('name'));
   }, [isAuthenticated]);
@@ -32,6 +34,7 @@ function NavScrollMainBar() {
     sessionStorage.removeItem('email');
     setShowLogoutPopup(false);
     setIsAuthenticated(false);
+    navigate('/flights');
   }
 
   function handleAvatarClick() {

@@ -102,8 +102,6 @@ export async function getFlightSortFilter(
   minPrice,
   maxPrice
 ) {
-  console.log(filterOptions);
-
   const travelInfo = {
     source,
     destination,
@@ -143,8 +141,6 @@ export async function getFlightSortFilter(
     );
     filtered.aircraftModel = air[0].model;
   }
-
-  console.log(JSON.stringify(filtered));
 
   if (sortValue && filterOptions.length > 0) {
     const response = await fetch(

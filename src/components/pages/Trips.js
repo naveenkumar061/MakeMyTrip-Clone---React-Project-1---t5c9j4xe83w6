@@ -19,8 +19,6 @@ function Trips() {
 
   const { booking, isLoading } = useBookings();
 
-  console.log(booking?.data);
-
   const bookingArray = booking?.data;
 
   const bookUpcomeList = bookingArray?.filter(

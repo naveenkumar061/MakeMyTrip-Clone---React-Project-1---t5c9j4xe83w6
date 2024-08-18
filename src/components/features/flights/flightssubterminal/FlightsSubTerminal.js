@@ -123,8 +123,6 @@ function FlightsSubTerminal() {
     maximumPrice
   );
 
-  console.log(flightsFilterSort);
-
   // Set initial values based on URL parameters
   useEffect(() => {
     setFromIndex(sourceIataCode);
