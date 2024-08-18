@@ -4,6 +4,8 @@ import { useState, useEffect, useRef } from 'react';
 import Avatar from 'react-avatar';
 import Modal from '../../utils/Modal';
 import { useLoginContext } from '../../context/login/LoginContext';
+import { SlHandbag } from 'react-icons/sl';
+import { CiLogout } from 'react-icons/ci';
 
 function PageSwitcher({ topRightNavItem }) {
   const { isAuthenticated, setIsAuthenticated } = useLoginContext();
@@ -140,12 +142,20 @@ function PageSwitcher({ topRightNavItem }) {
           {showLogoutPopup && (
             <div
               ref={popupRef}
-              className="absolute right-0 mt-2 w-48 rounded-md bg-white shadow-lg"
+              className="absolute right-0 mt-2 w-48 rounded-md bg-white shadow-lg z-30"
             >
+              <Link
+                to="/trips"
+                className="w-full border-b border-slate-400 p-2 justify-center text-left text-gray-700 hover:bg-blue-100 flex items-center gap-4 font-bold text-lg"
+              >
+                <SlHandbag className="text-lg" />
+                My Trips
+              </Link>
               <button
                 onClick={handleLogout}
-                className="block w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100"
+                className="flex items-center text-lg gap-4 font-bold w-full p-2 justify-center text-left text-gray-700 hover:bg-blue-100"
               >
+                <CiLogout className="text-2xl" />
                 Logout
               </button>
             </div>

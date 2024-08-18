@@ -7,6 +7,9 @@ import NavScrollMainBarLeft from './NavScrollMainBarLeft';
 import Modal from '../../utils/Modal';
 import Login from '../../pages/Login';
 import { useLoginContext } from '../../context/login/LoginContext';
+import { Link } from 'react-router-dom';
+import { CiLogout } from 'react-icons/ci';
+import { SlHandbag } from 'react-icons/sl';
 
 function NavScrollMainBar() {
   const { isAuthenticated, setIsAuthenticated } = useLoginContext();
@@ -82,13 +85,21 @@ function NavScrollMainBar() {
         {showLogoutPopup && (
           <div
             ref={popupRef}
-            className="absolute right-0 mt-2 w-48 rounded-md bg-white shadow-lg"
+            className="absolute right-0 mt-2 w-48 rounded-md bg-white shadow-lg border border-slate-400"
             style={{ top: '100%' }}
           >
+            <Link
+              to="/trips"
+              className="w-full border-b border-slate-400 p-2 justify-center text-left text-gray-700 hover:bg-blue-100 flex items-center gap-4 font-bold text-lg"
+            >
+              <SlHandbag className="text-lg" />
+              My Trips
+            </Link>
             <button
               onClick={handleLogout}
-              className="block w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100"
+              className="flex items-center text-lg gap-4 font-bold w-full p-2 justify-center text-left text-gray-700 hover:bg-blue-100"
             >
+              <CiLogout className="text-2xl" />
               Logout
             </button>
           </div>

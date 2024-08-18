@@ -11,7 +11,7 @@ function SelectSeat({ departureDate, item, travelDuration }) {
   const { from, to, weekday, month, day, longYear, date } =
     useBusesMainContext();
   const { isAuthenticated } = useLoginContext();
-  const { name, fare, arrivalTime, departureTime, type, seats } = item;
+  const { name, fare, arrivalTime, departureTime, type, seats, _id } = item;
 
   const [seatsList, setSeatsList] = useState([]);
   const [openModal, setOpenModal] = useState(false);
@@ -76,14 +76,17 @@ function SelectSeat({ departureDate, item, travelDuration }) {
       const searchParams = new URLSearchParams();
       searchParams.append('busName', name);
       searchParams.append('arrivalDate', date);
-      searchParams.append('departueDate', departureDate);
+      searchParams.append('departureDate', departureDate);
       searchParams.append('type', type);
       searchParams.append('seats', seatsList);
       searchParams.append('arrivalTime', arrivalTime);
-      searchParams.append('departueTime', departureTime);
+      searchParams.append('departureTime', departureTime);
       searchParams.append('travelDuration', travelDuration);
       searchParams.append('from', from);
       searchParams.append('to', to);
+      searchParams.append('fare', fare);
+      searchParams.append('busId', _id);
+      searchParams.append('type', type);
       navigate({
         pathname: '/bus-tickets/results/booking',
         search: `?${searchParams.toString()}`,

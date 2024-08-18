@@ -25,11 +25,14 @@ function BusUnique({ item }) {
     }
 
     function calculateDuration(arrivalTime, departureTime) {
+      console.log(arrivalTime);
+      console.log(departureTime);
       const arrivalMinutes = timeToMinutes(arrivalTime);
       const departureMinutes = timeToMinutes(departureTime);
 
-      if (departureDate > date) {
+      if (departureTime < arrivalTime) {
         const arrive = 24 * 60 - arrivalMinutes;
+        console.log('arrive', arrive);
         return arrive + departureMinutes;
       } else return departureMinutes - arrivalMinutes;
     }
@@ -49,7 +52,7 @@ function BusUnique({ item }) {
     }
 
     adjustDepartureTime(arrivalTime, departureTime);
-  }, [arrivalTime, departureTime]);
+  }, [date, arrivalTime, departureTime]);
 
   return (
     <div className="bg-white my-4 rounded-2xl border border-[#e7e7e7] py-2 w-full">

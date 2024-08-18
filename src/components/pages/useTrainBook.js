@@ -3,6 +3,7 @@ import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import { useTrainsMainContext } from '../context/Trains/TrainsMainContext';
 import { trainBook } from '../services/apiBooking';
+import { addDays } from 'date-fns';
 
 export function useTrainBook() {
   const searchParams = new URLSearchParams();
@@ -12,7 +13,7 @@ export function useTrainBook() {
 
   searchParams.append('train_id', trainId);
   searchParams.append('startDate', date);
-  searchParams.append('endDate', date);
+  searchParams.append('endDate', addDays(new Date(date), 1));
 
   const navigate = useNavigate();
 
