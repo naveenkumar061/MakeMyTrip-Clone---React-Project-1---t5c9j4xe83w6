@@ -21,7 +21,7 @@
 
 /* Custom Scrollbar */
 .scrollbar-thin::-webkit-scrollbar {
-  height: 7px; /* Height for horizontal scrollbar */
+  height: 0.25px; /* Height for horizontal scrollbar */
 }
 
 .scrollbar-thin::-webkit-scrollbar-track {

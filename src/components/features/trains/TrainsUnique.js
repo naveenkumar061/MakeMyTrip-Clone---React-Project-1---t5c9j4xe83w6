@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { useLoginContext } from '../../context/login/LoginContext';
 
 function TrainsUnique({ train }) {
-  console.log(train);
+  // console.log(train);
   const {
     trainName,
     trainType,

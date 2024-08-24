@@ -273,8 +273,8 @@ function BusesSubTerminal() {
   }
 
   return (
-    <div className="pt-20">
-      <div className="flex flex-col items-center justify-center gap-4 p-4 md:h-[350px] md:items-center md:flex-row bg-gradient-to-t from-[#15457b] to-[#051423] text-sm text-blue-400">
+    <div className="pt-0">
+      <div className="flex flex-col items-center justify-center gap-4 p-4 md:h-[300px] md:items-center md:flex-row bg-gradient-to-t from-[#15457b] to-[#051423] text-sm text-blue-400">
         <div
           className={commonClass + ' h-1/4 w-full'}
           onClick={handleFromClick}

@@ -6,4 +6,5 @@ export const trainsJCFL = [
   'AC three tier(economy)-3E',
   'Second Sitting -2S',
   'Executive Anubhuti -EA',
+  'Sleeper Class -SL',
 ];

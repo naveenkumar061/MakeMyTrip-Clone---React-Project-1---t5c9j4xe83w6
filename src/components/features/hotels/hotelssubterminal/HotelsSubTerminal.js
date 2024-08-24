@@ -219,8 +219,8 @@ function HotelsSubTerminal() {
   }
 
   return (
-    <div className="mt-20">
-      <div className="flex flex-col h-fit md:flex-row md:h-[350px] p-4 items-center justify-center gap-4 bg-gradient-to-t from-[#15457b] to-[#051423] text-blue-400 text-sm">
+    <div className="mt-0">
+      <div className="flex flex-col h-fit md:flex-row md:h-[300px] p-4 items-center justify-center gap-4 bg-gradient-to-t from-[#15457b] to-[#051423] text-blue-400 text-sm">
         <div
           className={`${commonClass}`}
           onClick={handleCityClick}

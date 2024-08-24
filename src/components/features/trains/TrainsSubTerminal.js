@@ -88,62 +88,625 @@ function TrainsSubTerminal() {
 
     console.log(filter);
 
+    const trainTypes = [
+      'Superfast',
+      'Rajdhani',
+      'Express',
+      'Shatabdi',
+      'Duronto',
+    ];
+
+    const coachTypes = [
+      'AC Chair Car -CC',
+      '1st Class AC -1A',
+      '2 Tier AC -2A',
+      '3 Tier AC -3A',
+      'AC three tier(economy)-3E',
+      'Second Sitting -2S',
+      'Executive Anubhuti -EA',
+      'Sleeper Class -SL',
+    ];
+
     for (let i = 0; i < filter.length; i++) {
-      if (filter[i] === 'AC Chair Car -CC')
-        filterTrains = [
-          ...filterTrains,
-          ...allTrains?.filter((train) =>
-            train.coaches.find((coach, index) => coach.coachType === 'CC')
-          ),
-        ];
+      if (filter[i] === 'AC Chair Car -CC') {
+        const matchingTrainTypes = filter.filter((type) =>
+          trainTypes.includes(type)
+        );
+        if (matchingTrainTypes.length > 0) {
+          for (let i = 0; i < matchingTrainTypes.length; i++) {
+            if (matchingTrainTypes[i] === 'Superfast')
+              filterTrains = [
+                ...filterTrains,
+                ...allTrains
+                  ?.filter((train) => train.trainType === 'Superfast')
+                  .filter((train) =>
+                    train.coaches.find(
+                      (coach, index) => coach.coachType === 'CC'
+                    )
+                  ),
+              ];
 
-      if (filter[i] === '1st Class AC -1A')
-        filterTrains = [
-          ...filterTrains,
-          ...allTrains?.filter((train) =>
-            train.coaches.find((coach, index) => coach.coachType === '1A')
-          ),
-        ];
+            if (matchingTrainTypes[i] === 'Rajdhani')
+              filterTrains = [
+                ...filterTrains,
+                ...allTrains
+                  ?.filter((train) => train.trainType === 'Rajdhani')
+                  .filter((train) =>
+                    train.coaches.find(
+                      (coach, index) => coach.coachType === 'CC'
+                    )
+                  ),
+              ];
 
-      if (filter[i] === '2 Tier AC -2A')
-        filterTrains = [
-          ...filterTrains,
-          ...allTrains?.filter((train) =>
-            train.coaches.find((coach, index) => coach.coachType === '2A')
-          ),
-        ];
+            if (matchingTrainTypes[i] === 'Express')
+              filterTrains = [
+                ...filterTrains,
+                ...allTrains
+                  ?.filter((train) => train.trainType === 'Express')
+                  .filter((train) =>
+                    train.coaches.find(
+                      (coach, index) => coach.coachType === 'CC'
+                    )
+                  ),
+              ];
 
-      if (filter[i] === '3 Tier AC -3A')
-        filterTrains = [
-          ...filterTrains,
-          ...allTrains?.filter((train) =>
-            train.coaches.find((coach, index) => coach.coachType === '3A')
-          ),
-        ];
+            if (matchingTrainTypes[i] === 'Shatabdi')
+              filterTrains = [
+                ...filterTrains,
+                ...allTrains
+                  ?.filter((train) => train.trainType === 'Shatabdi')
+                  .filter((train) =>
+                    train.coaches.find(
+                      (coach, index) => coach.coachType === 'CC'
+                    )
+                  ),
+              ];
 
-      if (filter[i] === 'AC three tier(economy)-3E')
-        filterTrains = [
-          ...filterTrains,
-          ...allTrains?.filter((train) =>
-            train.coaches.find((coach, index) => coach.coachType === '3E')
-          ),
-        ];
+            if (matchingTrainTypes[i] === 'Duronto')
+              filterTrains = [
+                ...filterTrains,
+                ...allTrains
+                  ?.filter((train) => train.trainType === 'Duronto')
+                  .filter((train) =>
+                    train.coaches.find(
+                      (coach, index) => coach.coachType === 'CC'
+                    )
+                  ),
+              ];
+          }
+        } else
+          filterTrains = [
+            ...filterTrains,
+            ...allTrains?.filter((train) =>
+              train.coaches.find((coach, index) => coach.coachType === 'CC')
+            ),
+          ];
+      }
 
-      if (filter[i] === 'Second Sitting -2S')
-        filterTrains = [
-          ...filterTrains,
-          ...allTrains?.filter((train) =>
-            train.coaches.find((coach, index) => coach.coachType === '2S')
-          ),
-        ];
+      if (filter[i] === '1st Class AC -1A') {
+        const matchingTrainTypes = filter.filter((type) =>
+          trainTypes.includes(type)
+        );
+        if (matchingTrainTypes.length > 0) {
+          for (let i = 0; i < matchingTrainTypes.length; i++) {
+            if (matchingTrainTypes[i] === 'Superfast')
+              filterTrains = [
+                ...filterTrains,
+                ...allTrains
+                  ?.filter((train) => train.trainType === 'Superfast')
+                  .filter((train) =>
+                    train.coaches.find(
+                      (coach, index) => coach.coachType === '1A'
+                    )
+                  ),
+              ];
 
-      if (filter[i] === 'Executive Anubhuti -EA')
-        filterTrains = [
-          ...filterTrains,
-          ...allTrains?.filter((train) =>
-            train.coaches.find((coach, index) => coach.coachType === 'EA')
-          ),
-        ];
+            if (matchingTrainTypes[i] === 'Rajdhani')
+              filterTrains = [
+                ...filterTrains,
+                ...allTrains
+                  ?.filter((train) => train.trainType === 'Rajdhani')
+                  .filter((train) =>
+                    train.coaches.find(
+                      (coach, index) => coach.coachType === '1A'
+                    )
+                  ),
+              ];
+
+            if (matchingTrainTypes[i] === 'Express')
+              filterTrains = [
+                ...filterTrains,
+                ...allTrains
+                  ?.filter((train) => train.trainType === 'Express')
+                  .filter((train) =>
+                    train.coaches.find(
+                      (coach, index) => coach.coachType === '1A'
+                    )
+                  ),
+              ];
+
+            if (matchingTrainTypes[i] === 'Shatabdi')
+              filterTrains = [
+                ...filterTrains,
+                ...allTrains
+                  ?.filter((train) => train.trainType === 'Shatabdi')
+                  .filter((train) =>
+                    train.coaches.find(
+                      (coach, index) => coach.coachType === '1A'
+                    )
+                  ),
+              ];
+
+            if (matchingTrainTypes[i] === 'Duronto')
+              filterTrains = [
+                ...filterTrains,
+                ...allTrains
+                  ?.filter((train) => train.trainType === 'Duronto')
+                  .filter((train) =>
+                    train.coaches.find(
+                      (coach, index) => coach.coachType === '1A'
+                    )
+                  ),
+              ];
+          }
+        } else
+          filterTrains = [
+            ...filterTrains,
+            ...allTrains?.filter((train) =>
+              train.coaches.find((coach, index) => coach.coachType === '1A')
+            ),
+          ];
+      }
+
+      if (filter[i] === '2 Tier AC -2A') {
+        const matchingTrainTypes = filter.filter((type) =>
+          trainTypes.includes(type)
+        );
+        if (matchingTrainTypes.length > 0) {
+          for (let i = 0; i < matchingTrainTypes.length; i++) {
+            if (matchingTrainTypes[i] === 'Superfast')
+              filterTrains = [
+                ...filterTrains,
+                ...allTrains
+                  ?.filter((train) => train.trainType === 'Superfast')
+                  .filter((train) =>
+                    train.coaches.find(
+                      (coach, index) => coach.coachType === '2A'
+                    )
+                  ),
+              ];
+
+            if (matchingTrainTypes[i] === 'Rajdhani')
+              filterTrains = [
+                ...filterTrains,
+                ...allTrains
+                  ?.filter((train) => train.trainType === 'Rajdhani')
+                  .filter((train) =>
+                    train.coaches.find(
+                      (coach, index) => coach.coachType === '2A'
+                    )
+                  ),
+              ];
+
+            if (matchingTrainTypes[i] === 'Express')
+              filterTrains = [
+                ...filterTrains,
+                ...allTrains
+                  ?.filter((train) => train.trainType === 'Express')
+                  .filter((train) =>
+                    train.coaches.find(
+                      (coach, index) => coach.coachType === '2A'
+                    )
+                  ),
+              ];
+
+            if (matchingTrainTypes[i] === 'Shatabdi')
+              filterTrains = [
+                ...filterTrains,
+                ...allTrains
+                  ?.filter((train) => train.trainType === 'Shatabdi')
+                  .filter((train) =>
+                    train.coaches.find(
+                      (coach, index) => coach.coachType === '2A'
+                    )
+                  ),
+              ];
+
+            if (matchingTrainTypes[i] === 'Duronto')
+              filterTrains = [
+                ...filterTrains,
+                ...allTrains
+                  ?.filter((train) => train.trainType === 'Duronto')
+                  .filter((train) =>
+                    train.coaches.find(
+                      (coach, index) => coach.coachType === '2A'
+                    )
+                  ),
+              ];
+          }
+        } else
+          filterTrains = [
+            ...filterTrains,
+            ...allTrains?.filter((train) =>
+              train.coaches.find((coach, index) => coach.coachType === '2A')
+            ),
+          ];
+      }
+
+      if (filter[i] === '3 Tier AC -3A') {
+        const matchingTrainTypes = filter.filter((type) =>
+          trainTypes.includes(type)
+        );
+        if (matchingTrainTypes.length > 0) {
+          for (let i = 0; i < matchingTrainTypes.length; i++) {
+            if (matchingTrainTypes[i] === 'Superfast')
+              filterTrains = [
+                ...filterTrains,
+                ...allTrains
+                  ?.filter((train) => train.trainType === 'Superfast')
+                  .filter((train) =>
+                    train.coaches.find(
+                      (coach, index) => coach.coachType === '3A'
+                    )
+                  ),
+              ];
+
+            if (matchingTrainTypes[i] === 'Rajdhani')
+              filterTrains = [
+                ...filterTrains,
+                ...allTrains
+                  ?.filter((train) => train.trainType === 'Rajdhani')
+                  .filter((train) =>
+                    train.coaches.find(
+                      (coach, index) => coach.coachType === '3A'
+                    )
+                  ),
+              ];
+
+            if (matchingTrainTypes[i] === 'Express')
+              filterTrains = [
+                ...filterTrains,
+                ...allTrains
+                  ?.filter((train) => train.trainType === 'Express')
+                  .filter((train) =>
+                    train.coaches.find(
+                      (coach, index) => coach.coachType === '3A'
+                    )
+                  ),
+              ];
+
+            if (matchingTrainTypes[i] === 'Shatabdi')
+              filterTrains = [
+                ...filterTrains,
+                ...allTrains
+                  ?.filter((train) => train.trainType === 'Shatabdi')
+                  .filter((train) =>
+                    train.coaches.find(
+                      (coach, index) => coach.coachType === '3A'
+                    )
+                  ),
+              ];
+
+            if (matchingTrainTypes[i] === 'Duronto')
+              filterTrains = [
+                ...filterTrains,
+                ...allTrains
+                  ?.filter((train) => train.trainType === 'Duronto')
+                  .filter((train) =>
+                    train.coaches.find(
+                      (coach, index) => coach.coachType === '3A'
+                    )
+                  ),
+              ];
+          }
+        } else
+          filterTrains = [
+            ...filterTrains,
+            ...allTrains?.filter((train) =>
+              train.coaches.find((coach, index) => coach.coachType === '3A')
+            ),
+          ];
+      }
+
+      if (filter[i] === 'AC three tier(economy)-3E') {
+        const matchingTrainTypes = filter.filter((type) =>
+          trainTypes.includes(type)
+        );
+        if (matchingTrainTypes.length > 0) {
+          for (let i = 0; i < matchingTrainTypes.length; i++) {
+            if (matchingTrainTypes[i] === 'Superfast')
+              filterTrains = [
+                ...filterTrains,
+                ...allTrains
+                  ?.filter((train) => train.trainType === 'Superfast')
+                  .filter((train) =>
+                    train.coaches.find(
+                      (coach, index) => coach.coachType === '3E'
+                    )
+                  ),
+              ];
+
+            if (matchingTrainTypes[i] === 'Rajdhani')
+              filterTrains = [
+                ...filterTrains,
+                ...allTrains
+                  ?.filter((train) => train.trainType === 'Rajdhani')
+                  .filter((train) =>
+                    train.coaches.find(
+                      (coach, index) => coach.coachType === '3E'
+                    )
+                  ),
+              ];
+
+            if (matchingTrainTypes[i] === 'Express')
+              filterTrains = [
+                ...filterTrains,
+                ...allTrains
+                  ?.filter((train) => train.trainType === 'Express')
+                  .filter((train) =>
+                    train.coaches.find(
+                      (coach, index) => coach.coachType === '3E'
+                    )
+                  ),
+              ];
+
+            if (matchingTrainTypes[i] === 'Shatabdi')
+              filterTrains = [
+                ...filterTrains,
+                ...allTrains
+                  ?.filter((train) => train.trainType === 'Shatabdi')
+                  .filter((train) =>
+                    train.coaches.find(
+                      (coach, index) => coach.coachType === '3E'
+                    )
+                  ),
+              ];
+
+            if (matchingTrainTypes[i] === 'Duronto')
+              filterTrains = [
+                ...filterTrains,
+                ...allTrains
+                  ?.filter((train) => train.trainType === 'Duronto')
+                  .filter((train) =>
+                    train.coaches.find(
+                      (coach, index) => coach.coachType === '3E'
+                    )
+                  ),
+              ];
+          }
+        } else
+          filterTrains = [
+            ...filterTrains,
+            ...allTrains?.filter((train) =>
+              train.coaches.find((coach, index) => coach.coachType === '3E')
+            ),
+          ];
+      }
+
+      if (filter[i] === 'Second Sitting -2S') {
+        const matchingTrainTypes = filter.filter((type) =>
+          trainTypes.includes(type)
+        );
+        if (matchingTrainTypes.length > 0) {
+          for (let i = 0; i < matchingTrainTypes.length; i++) {
+            if (matchingTrainTypes[i] === 'Superfast')
+              filterTrains = [
+                ...filterTrains,
+                ...allTrains
+                  ?.filter((train) => train.trainType === 'Superfast')
+                  .filter((train) =>
+                    train.coaches.find(
+                      (coach, index) => coach.coachType === '2S'
+                    )
+                  ),
+              ];
+
+            if (matchingTrainTypes[i] === 'Rajdhani')
+              filterTrains = [
+                ...filterTrains,
+                ...allTrains
+                  ?.filter((train) => train.trainType === 'Rajdhani')
+                  .filter((train) =>
+                    train.coaches.find(
+                      (coach, index) => coach.coachType === '2S'
+                    )
+                  ),
+              ];
+
+            if (matchingTrainTypes[i] === 'Express')
+              filterTrains = [
+                ...filterTrains,
+                ...allTrains
+                  ?.filter((train) => train.trainType === 'Express')
+                  .filter((train) =>
+                    train.coaches.find(
+                      (coach, index) => coach.coachType === '2S'
+                    )
+                  ),
+              ];
+
+            if (matchingTrainTypes[i] === 'Shatabdi')
+              filterTrains = [
+                ...filterTrains,
+                ...allTrains
+                  ?.filter((train) => train.trainType === 'Shatabdi')
+                  .filter((train) =>
+                    train.coaches.find(
+                      (coach, index) => coach.coachType === '2S'
+                    )
+                  ),
+              ];
+
+            if (matchingTrainTypes[i] === 'Duronto')
+              filterTrains = [
+                ...filterTrains,
+                ...allTrains
+                  ?.filter((train) => train.trainType === 'Duronto')
+                  .filter((train) =>
+                    train.coaches.find(
+                      (coach, index) => coach.coachType === '2S'
+                    )
+                  ),
+              ];
+          }
+        } else
+          filterTrains = [
+            ...filterTrains,
+            ...allTrains?.filter((train) =>
+              train.coaches.find((coach, index) => coach.coachType === '2S')
+            ),
+          ];
+      }
+
+      if (filter[i] === 'Executive Anubhuti -EA') {
+        const matchingTrainTypes = filter.filter((type) =>
+          trainTypes.includes(type)
+        );
+        if (matchingTrainTypes.length > 0) {
+          for (let i = 0; i < matchingTrainTypes.length; i++) {
+            if (matchingTrainTypes[i] === 'Superfast')
+              filterTrains = [
+                ...filterTrains,
+                ...allTrains
+                  ?.filter((train) => train.trainType === 'Superfast')
+                  .filter((train) =>
+                    train.coaches.find(
+                      (coach, index) => coach.coachType === 'EA'
+                    )
+                  ),
+              ];
+
+            if (matchingTrainTypes[i] === 'Rajdhani')
+              filterTrains = [
+                ...filterTrains,
+                ...allTrains
+                  ?.filter((train) => train.trainType === 'Rajdhani')
+                  .filter((train) =>
+                    train.coaches.find(
+                      (coach, index) => coach.coachType === 'EA'
+                    )
+                  ),
+              ];
+
+            if (matchingTrainTypes[i] === 'Express')
+              filterTrains = [
+                ...filterTrains,
+                ...allTrains
+                  ?.filter((train) => train.trainType === 'Express')
+                  .filter((train) =>
+                    train.coaches.find(
+                      (coach, index) => coach.coachType === 'EA'
+                    )
+                  ),
+              ];
+
+            if (matchingTrainTypes[i] === 'Shatabdi')
+              filterTrains = [
+                ...filterTrains,
+                ...allTrains
+                  ?.filter((train) => train.trainType === 'Shatabdi')
+                  .filter((train) =>
+                    train.coaches.find(
+                      (coach, index) => coach.coachType === 'EA'
+                    )
+                  ),
+              ];
+
+            if (matchingTrainTypes[i] === 'Duronto')
+              filterTrains = [
+                ...filterTrains,
+                ...allTrains
+                  ?.filter((train) => train.trainType === 'Duronto')
+                  .filter((train) =>
+                    train.coaches.find(
+                      (coach, index) => coach.coachType === 'EA'
+                    )
+                  ),
+              ];
+          }
+        } else
+          filterTrains = [
+            ...filterTrains,
+            ...allTrains?.filter((train) =>
+              train.coaches.find((coach, index) => coach.coachType === 'EA')
+            ),
+          ];
+      }
+
+      if (filter[i] === 'Sleeper Class -SL') {
+        const matchingTrainTypes = filter.filter((type) =>
+          trainTypes.includes(type)
+        );
+        if (matchingTrainTypes.length > 0) {
+          for (let i = 0; i < matchingTrainTypes.length; i++) {
+            if (matchingTrainTypes[i] === 'Superfast')
+              filterTrains = [
+                ...filterTrains,
+                ...allTrains
+                  ?.filter((train) => train.trainType === 'Superfast')
+                  .filter((train) =>
+                    train.coaches.find(
+                      (coach, index) => coach.coachType === 'SL'
+                    )
+                  ),
+              ];
+
+            if (matchingTrainTypes[i] === 'Rajdhani')
+              filterTrains = [
+                ...filterTrains,
+                ...allTrains
+                  ?.filter((train) => train.trainType === 'Rajdhani')
+                  .filter((train) =>
+                    train.coaches.find(
+                      (coach, index) => coach.coachType === 'SL'
+                    )
+                  ),
+              ];
+
+            if (matchingTrainTypes[i] === 'Express')
+              filterTrains = [
+                ...filterTrains,
+                ...allTrains
+                  ?.filter((train) => train.trainType === 'Express')
+                  .filter((train) =>
+                    train.coaches.find(
+                      (coach, index) => coach.coachType === 'SL'
+                    )
+                  ),
+              ];
+
+            if (matchingTrainTypes[i] === 'Shatabdi')
+              filterTrains = [
+                ...filterTrains,
+                ...allTrains
+                  ?.filter((train) => train.trainType === 'Shatabdi')
+                  .filter((train) =>
+                    train.coaches.find(
+                      (coach, index) => coach.coachType === 'SL'
+                    )
+                  ),
+              ];
+
+            if (matchingTrainTypes[i] === 'Duronto')
+              filterTrains = [
+                ...filterTrains,
+                ...allTrains
+                  ?.filter((train) => train.trainType === 'Duronto')
+                  .filter((train) =>
+                    train.coaches.find(
+                      (coach, index) => coach.coachType === 'SL'
+                    )
+                  ),
+              ];
+          }
+        } else
+          filterTrains = [
+            ...filterTrains,
+            ...allTrains?.filter((train) =>
+              train.coaches.find((coach, index) => coach.coachType === 'SL')
+            ),
+          ];
+      }
 
       if (filter[i] === 'Departure after 6PM')
         filterTrains = [
@@ -157,35 +720,130 @@ function TrainsSubTerminal() {
           ...allTrains?.filter((train) => train.arrivalTime <= '12:00'),
         ];
 
-      if (filter[i] === 'Superfast')
-        filterTrains = [
-          ...filterTrains,
-          ...allTrains?.filter((train) => train.trainType === 'Superfast'),
-        ];
+      if (filter[i] === 'Superfast') {
+        const matchingCoachTypes = filter.filter((type) =>
+          coachTypes.includes(type)
+        );
+        if (matchingCoachTypes.length > 0) {
+          for (let i = 0; i < matchingCoachTypes.length; i++) {
+            filterTrains = [
+              ...filterTrains,
+              ...allTrains
+                ?.filter((train) =>
+                  train.coaches.find(
+                    (coach, index) =>
+                      coach.coachType === matchingCoachTypes[i].split('-')[1]
+                  )
+                )
+                .filter((train) => train.trainType === 'Superfast'),
+            ];
+          }
+        } else
+          filterTrains = [
+            ...filterTrains,
+            ...allTrains?.filter((train) => train.trainType === 'Superfast'),
+          ];
+      }
 
-      if (filter[i] === 'Rajdhani')
-        filterTrains = [
-          ...filterTrains,
-          ...allTrains?.filter((train) => train.trainType === 'Rajdhani'),
-        ];
+      if (filter[i] === 'Rajdhani') {
+        const matchingCoachTypes = filter.filter((type) =>
+          coachTypes.includes(type)
+        );
+        if (matchingCoachTypes.length > 0) {
+          for (let i = 0; i < matchingCoachTypes.length; i++) {
+            filterTrains = [
+              ...filterTrains,
+              ...allTrains
+                ?.filter((train) =>
+                  train.coaches.find(
+                    (coach, index) =>
+                      coach.coachType === matchingCoachTypes[i].split('-')[1]
+                  )
+                )
+                .filter((train) => train.trainType === 'Rajdhani'),
+            ];
+          }
+        } else
+          filterTrains = [
+            ...filterTrains,
+            ...allTrains?.filter((train) => train.trainType === 'Rajdhani'),
+          ];
+      }
 
-      if (filter[i] === 'Express')
-        filterTrains = [
-          ...filterTrains,
-          ...allTrains?.filter((train) => train.trainType === 'Express'),
-        ];
+      if (filter[i] === 'Express') {
+        const matchingCoachTypes = filter.filter((type) =>
+          coachTypes.includes(type)
+        );
+        if (matchingCoachTypes.length > 0) {
+          for (let i = 0; i < matchingCoachTypes.length; i++) {
+            filterTrains = [
+              ...filterTrains,
+              ...allTrains
+                ?.filter((train) =>
+                  train.coaches.find(
+                    (coach, index) =>
+                      coach.coachType === matchingCoachTypes[i].split('-')[1]
+                  )
+                )
+                .filter((train) => train.trainType === 'Express'),
+            ];
+          }
+        } else
+          filterTrains = [
+            ...filterTrains,
+            ...allTrains?.filter((train) => train.trainType === 'Express'),
+          ];
+      }
 
-      if (filter[i] === 'Shatabdi')
-        filterTrains = [
-          ...filterTrains,
-          ...allTrains?.filter((train) => train.trainType === 'Shatabdi'),
-        ];
+      if (filter[i] === 'Shatabdi') {
+        const matchingCoachTypes = filter.filter((type) =>
+          coachTypes.includes(type)
+        );
+        if (matchingCoachTypes.length > 0) {
+          for (let i = 0; i < matchingCoachTypes.length; i++) {
+            filterTrains = [
+              ...filterTrains,
+              ...allTrains
+                ?.filter((train) =>
+                  train.coaches.find(
+                    (coach, index) =>
+                      coach.coachType === matchingCoachTypes[i].split('-')[1]
+                  )
+                )
+                .filter((train) => train.trainType === 'Shatabdi'),
+            ];
+          }
+        } else
+          filterTrains = [
+            ...filterTrains,
+            ...allTrains?.filter((train) => train.trainType === 'Shatabdi'),
+          ];
+      }
 
-      if (filter[i] === 'Duronto')
-        filterTrains = [
-          ...filterTrains,
-          ...allTrains?.filter((train) => train.trainType === 'Duronto'),
-        ];
+      if (filter[i] === 'Duronto') {
+        const matchingCoachTypes = filter.filter((type) =>
+          coachTypes.includes(type)
+        );
+        if (matchingCoachTypes.length > 0) {
+          for (let i = 0; i < matchingCoachTypes.length; i++) {
+            filterTrains = [
+              ...filterTrains,
+              ...allTrains
+                ?.filter((train) =>
+                  train.coaches.find(
+                    (coach, index) =>
+                      coach.coachType === matchingCoachTypes[i].split('-')[1]
+                  )
+                )
+                .filter((train) => train.trainType === 'Duronto'),
+            ];
+          }
+        } else
+          filterTrains = [
+            ...filterTrains,
+            ...allTrains?.filter((train) => train.trainType === 'Duronto'),
+          ];
+      }
     }
 
     if (filter.length === 0) filterTrains = allTrains;
@@ -250,8 +908,8 @@ function TrainsSubTerminal() {
   }
 
   return (
-    <div className="pt-20">
-      <div className="flex flex-col items-center justify-center gap-4 p-4 md:h-[350px] md:items-center md:flex-row bg-gradient-to-t from-[#15457b] to-[#051423] text-sm text-blue-400">
+    <div className="pt-0">
+      <div className="flex flex-col items-center justify-center gap-4 p-4 md:h-[300px] md:items-center md:flex-row bg-gradient-to-t from-[#15457b] to-[#051423] text-sm text-blue-400">
         <div
           className={commonClass + ' h-1/4 w-full'}
           onClick={handleFromClick}

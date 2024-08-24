@@ -20,10 +20,8 @@ export function useLogin(close) {
     onError: (err) => {
       if (err.message === 'Unauthorized: Invalid email or password') {
         toast.error('Unauthorized: Invalid email or password');
-        close();
       } else {
         toast.error(err.message);
-        close();
       }
     },
   });
